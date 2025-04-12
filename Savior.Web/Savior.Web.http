@@ -1,0 +1,6 @@
+@Savior.Web_HostAddress = http://localhost:5007
+
+GET {{Savior.Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
