@@ -1,0 +1,382 @@
+[
+  {
+    "name": "Nurse Salma",
+    "role": "NURSE",
+    "phone": "01001234567",
+    "price": 150.0,
+    "location": "Nasr City",
+    "availability": [
+      {
+        "day": "Saturday",
+        "fromTime": "10:00",
+        "toTime": "18:00"
+      },
+      {
+        "day": "Monday",
+        "fromTime": "12:00",
+        "toTime": "16:00"
+      }
+    ]
+  },
+  {
+    "name": "Nurse Ahmed",
+    "role": "NURSE",
+    "phone": "01112345678",
+    "price": 160.0,
+    "location": "Heliopolis",
+    "availability": [
+      {
+        "day": "Sunday",
+        "fromTime": "09:00",
+        "toTime": "17:00"
+      },
+      {
+        "day": "Tuesday",
+        "fromTime": "11:00",
+        "toTime": "15:00"
+      }
+    ]
+  },
+  {
+    "name": "Nurse Fatma",
+    "role": "NURSE",
+    "phone": "01223456789",
+    "price": 140.0,
+    "location": "Maadi",
+    "availability": [
+      {
+        "day": "Thursday",
+        "fromTime": "08:00",
+        "toTime": "16:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "13:00",
+        "toTime": "20:00"
+      }
+    ]
+  },
+  {
+    "name": "Nurse Sara",
+    "role": "NURSE",
+    "phone": "01009876543",
+    "price": 155.0,
+    "location": "Zamalek",
+    "availability": [
+      {
+        "day": "Wednesday",
+        "fromTime": "09:00",
+        "toTime": "17:00"
+      },
+      {
+        "day": "Saturday",
+        "fromTime": "10:00",
+        "toTime": "18:00"
+      }
+    ]
+  },
+  {
+    "name": "Nurse Ali",
+    "role": "NURSE",
+    "phone": "01119876543",
+    "price": 145.0,
+    "location": "Mohandessin",
+    "availability": [
+      {
+        "day": "Monday",
+        "fromTime": "11:00",
+        "toTime": "16:00"
+      },
+      {
+        "day": "Thursday",
+        "fromTime": "12:00",
+        "toTime": "15:00"
+      }
+    ]
+  },
+  {
+    "name": "Nurse Dina",
+    "role": "NURSE",
+    "phone": "01229876543",
+    "price": 150.0,
+    "location": "Shobra",
+    "availability": [
+      {
+        "day": "Tuesday",
+        "fromTime": "08:00",
+        "toTime": "14:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "10:00",
+        "toTime": "16:00"
+      }
+    ]
+  },
+  {
+    "name": "Nurse Youssef",
+    "role": "NURSE",
+    "phone": "01001122334",
+    "price": 160.0,
+    "location": "New Cairo",
+    "availability": [
+      {
+        "day": "Sunday",
+        "fromTime": "10:00",
+        "toTime": "18:00"
+      },
+      {
+        "day": "Wednesday",
+        "fromTime": "09:00",
+        "toTime": "15:00"
+      }
+    ]
+  },
+  {
+    "name": "Nurse Amira",
+    "role": "NURSE",
+    "phone": "01112233445",
+    "price": 140.0,
+    "location": "Tagamo3",
+    "availability": [
+      {
+        "day": "Monday",
+        "fromTime": "12:00",
+        "toTime": "18:00"
+      },
+      {
+        "day": "Thursday",
+        "fromTime": "11:00",
+        "toTime": "17:00"
+      }
+    ]
+  },
+  {
+    "name": "Nurse Karim",
+    "role": "NURSE",
+    "phone": "01223344556",
+    "price": 150.0,
+    "location": "Madinty",
+    "availability": [
+      {
+        "day": "Friday",
+        "fromTime": "09:00",
+        "toTime": "15:00"
+      },
+      {
+        "day": "Saturday",
+        "fromTime": "12:00",
+        "toTime": "20:00"
+      }
+    ]
+  },
+  {
+    "name": "Nurse Nada",
+    "role": "NURSE",
+    "phone": "01001234567",
+    "price": 145.0,
+    "location": "October City",
+    "availability": [
+      {
+        "day": "Sunday",
+        "fromTime": "08:00",
+        "toTime": "16:00"
+      },
+      {
+        "day": "Tuesday",
+        "fromTime": "10:00",
+        "toTime": "15:00"
+      }
+    ]
+  },
+  {
+    "name": "Nurse Hala",
+    "role": "NURSE",
+    "phone": "01112345678",
+    "price": 155.0,
+    "location": "Sheikh Zayed",
+    "availability": [
+      {
+        "day": "Wednesday",
+        "fromTime": "11:00",
+        "toTime": "17:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "13:00",
+        "toTime": "20:00"
+      }
+    ]
+  },
+  {
+    "name": "Nurse Omar",
+    "role": "NURSE",
+    "phone": "01223456789",
+    "price": 140.0,
+    "location": "Rehab City",
+    "availability": [
+      {
+        "day": "Monday",
+        "fromTime": "09:00",
+        "toTime": "15:00"
+      },
+      {
+        "day": "Thursday",
+        "fromTime": "12:00",
+        "toTime": "16:00"
+      }
+    ]
+  },
+  {
+    "name": "Nurse Rania",
+    "role": "NURSE",
+    "phone": "01009876543",
+    "price": 150.0,
+    "location": "Obour City",
+    "availability": [
+      {
+        "day": "Tuesday",
+        "fromTime": "10:00",
+        "toTime": "18:00"
+      },
+      {
+        "day": "Saturday",
+        "fromTime": "08:00",
+        "toTime": "14:00"
+      }
+    ]
+  },
+  {
+    "name": "Nurse Tamer",
+    "role": "NURSE",
+    "phone": "01119876543",
+    "price": 160.0,
+    "location": "El-Shorouk",
+    "availability": [
+      {
+        "day": "Wednesday",
+        "fromTime": "09:00",
+        "toTime": "17:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "11:00",
+        "toTime": "15:00"
+      }
+    ]
+  },
+  {
+    "name": "Nurse Mona",
+    "role": "NURSE",
+    "phone": "01229876543",
+    "price": 145.0,
+    "location": "El-Haram",
+    "availability": [
+      {
+        "day": "Sunday",
+        "fromTime": "12:00",
+        "toTime": "18:00"
+      },
+      {
+        "day": "Thursday",
+        "fromTime": "10:00",
+        "toTime": "16:00"
+      }
+    ]
+  },
+  {
+    "name": "Nurse Khaled",
+    "role": "NURSE",
+    "phone": "01001122334",
+    "price": 150.0,
+    "location": "El-Dokki",
+    "availability": [
+      {
+        "day": "Monday",
+        "fromTime": "08:00",
+        "toTime": "14:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "13:00",
+        "toTime": "20:00"
+      }
+    ]
+  },
+  {
+    "name": "Nurse Aya",
+    "role": "NURSE",
+    "phone": "01112233445",
+    "price": 155.0,
+    "location": "El-Maadi",
+    "availability": [
+      {
+        "day": "Tuesday",
+        "fromTime": "10:00",
+        "toTime": "18:00"
+      },
+      {
+        "day": "Saturday",
+        "fromTime": "09:00",
+        "toTime": "15:00"
+      }
+    ]
+  },
+  {
+    "name": "Nurse Mohamed",
+    "role": "NURSE",
+    "phone": "01223344556",
+    "price": 140.0,
+    "location": "El-Nozha",
+    "availability": [
+      {
+        "day": "Wednesday",
+        "fromTime": "11:00",
+        "toTime": "17:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "12:00",
+        "toTime": "16:00"
+      }
+    ]
+  },
+  {
+    "name": "Nurse Yara",
+    "role": "NURSE",
+    "phone": "01001234567",
+    "price": 150.0,
+    "location": "El-Marg",
+    "availability": [
+      {
+        "day": "Sunday",
+        "fromTime": "08:00",
+        "toTime": "16:00"
+      },
+      {
+        "day": "Thursday",
+        "fromTime": "10:00",
+        "toTime": "15:00"
+      }
+    ]
+  },
+  {
+    "name": "Nurse Adam",
+    "role": "NURSE",
+    "phone": "01112345678",
+    "price": 160.0,
+    "location": "El-Agouza",
+    "availability": [
+      {
+        "day": "Monday",
+        "fromTime": "12:00",
+        "toTime": "18:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "11:00",
+        "toTime": "17:00"
+      }
+    ]
+  }
+]

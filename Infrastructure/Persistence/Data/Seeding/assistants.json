@@ -1,0 +1,382 @@
+[
+  {
+    "name": "Assistant Karim",
+    "role": "ASSIST",
+    "phone": "01001122334",
+    "price": 50.0,
+    "location": "New Cairo",
+    "availability": [
+      {
+        "day": "Sunday",
+        "fromTime": "08:00",
+        "toTime": "16:00"
+      },
+      {
+        "day": "Tuesday",
+        "fromTime": "09:00",
+        "toTime": "15:00"
+      }
+    ]
+  },
+  {
+    "name": "Assistant Amira",
+    "role": "ASSIST",
+    "phone": "01112233445",
+    "price": 120.0,
+    "location": "Tagamo3",
+    "availability": [
+      {
+        "day": "Monday",
+        "fromTime": "10:00",
+        "toTime": "18:00"
+      },
+      {
+        "day": "Thursday",
+        "fromTime": "11:00",
+        "toTime": "17:00"
+      }
+    ]
+  },
+  {
+    "name": "Assistant Youssef",
+    "role": "ASSIST",
+    "phone": "01223344556",
+    "price": 80.0,
+    "location": "Madinty",
+    "availability": [
+      {
+        "day": "Wednesday",
+        "fromTime": "09:00",
+        "toTime": "15:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "12:00",
+        "toTime": "20:00"
+      }
+    ]
+  },
+  {
+    "name": "Assistant Nada",
+    "role": "ASSIST",
+    "phone": "01001234567",
+    "price": 115.0,
+    "location": "October City",
+    "availability": [
+      {
+        "day": "Sunday",
+        "fromTime": "08:00",
+        "toTime": "16:00"
+      },
+      {
+        "day": "Tuesday",
+        "fromTime": "10:00",
+        "toTime": "15:00"
+      }
+    ]
+  },
+  {
+    "name": "Assistant Hala",
+    "role": "ASSIST",
+    "phone": "01112345678",
+    "price": 105.0,
+    "location": "Sheikh Zayed",
+    "availability": [
+      {
+        "day": "Wednesday",
+        "fromTime": "11:00",
+        "toTime": "17:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "13:00",
+        "toTime": "20:00"
+      }
+    ]
+  },
+  {
+    "name": "Assistant Omar",
+    "role": "ASSIST",
+    "phone": "01223456789",
+    "price": 110.0,
+    "location": "Rehab City",
+    "availability": [
+      {
+        "day": "Monday",
+        "fromTime": "09:00",
+        "toTime": "15:00"
+      },
+      {
+        "day": "Thursday",
+        "fromTime": "12:00",
+        "toTime": "16:00"
+      }
+    ]
+  },
+  {
+    "name": "Assistant Rania",
+    "role": "ASSIST",
+    "phone": "01009876543",
+    "price": 100.0,
+    "location": "Obour City",
+    "availability": [
+      {
+        "day": "Tuesday",
+        "fromTime": "10:00",
+        "toTime": "18:00"
+      },
+      {
+        "day": "Saturday",
+        "fromTime": "08:00",
+        "toTime": "14:00"
+      }
+    ]
+  },
+  {
+    "name": "Assistant Tamer",
+    "role": "ASSIST",
+    "phone": "01119876543",
+    "price": 120.0,
+    "location": "El-Shorouk",
+    "availability": [
+      {
+        "day": "Wednesday",
+        "fromTime": "09:00",
+        "toTime": "17:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "11:00",
+        "toTime": "15:00"
+      }
+    ]
+  },
+  {
+    "name": "Assistant Mona",
+    "role": "ASSIST",
+    "phone": "01229876543",
+    "price": 115.0,
+    "location": "El-Haram",
+    "availability": [
+      {
+        "day": "Sunday",
+        "fromTime": "12:00",
+        "toTime": "18:00"
+      },
+      {
+        "day": "Thursday",
+        "fromTime": "10:00",
+        "toTime": "16:00"
+      }
+    ]
+  },
+  {
+    "name": "Assistant Khaled",
+    "role": "ASSIST",
+    "phone": "01001122334",
+    "price": 105.0,
+    "location": "El-Dokki",
+    "availability": [
+      {
+        "day": "Monday",
+        "fromTime": "08:00",
+        "toTime": "14:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "13:00",
+        "toTime": "20:00"
+      }
+    ]
+  },
+  {
+    "name": "Assistant Aya",
+    "role": "ASSIST",
+    "phone": "01112233445",
+    "price": 110.0,
+    "location": "El-Maadi",
+    "availability": [
+      {
+        "day": "Tuesday",
+        "fromTime": "10:00",
+        "toTime": "18:00"
+      },
+      {
+        "day": "Saturday",
+        "fromTime": "09:00",
+        "toTime": "15:00"
+      }
+    ]
+  },
+  {
+    "name": "Assistant Mohamed",
+    "role": "ASSIST",
+    "phone": "01223344556",
+    "price": 120.0,
+    "location": "El-Nozha",
+    "availability": [
+      {
+        "day": "Wednesday",
+        "fromTime": "11:00",
+        "toTime": "17:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "12:00",
+        "toTime": "16:00"
+      }
+    ]
+  },
+  {
+    "name": "Assistant Yara",
+    "role": "ASSIST",
+    "phone": "01001234567",
+    "price": 115.0,
+    "location": "El-Marg",
+    "availability": [
+      {
+        "day": "Sunday",
+        "fromTime": "08:00",
+        "toTime": "16:00"
+      },
+      {
+        "day": "Thursday",
+        "fromTime": "10:00",
+        "toTime": "15:00"
+      }
+    ]
+  },
+  {
+    "name": "Assistant Adam",
+    "role": "ASSIST",
+    "phone": "01112345678",
+    "price": 105.0,
+    "location": "El-Agouza",
+    "availability": [
+      {
+        "day": "Monday",
+        "fromTime": "12:00",
+        "toTime": "18:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "11:00",
+        "toTime": "17:00"
+      }
+    ]
+  },
+  {
+    "name": "Assistant Ahmed",
+    "role": "ASSIST",
+    "phone": "01223456789",
+    "price": 110.0,
+    "location": "El-Zamalek",
+    "availability": [
+      {
+        "day": "Tuesday",
+        "fromTime": "10:00",
+        "toTime": "18:00"
+      },
+      {
+        "day": "Saturday",
+        "fromTime": "09:00",
+        "toTime": "15:00"
+      }
+    ]
+  },
+  {
+    "name": "Assistant Sara",
+    "role": "ASSIST",
+    "phone": "01009876543",
+    "price": 120.0,
+    "location": "El-Mohandessin",
+    "availability": [
+      {
+        "day": "Wednesday",
+        "fromTime": "11:00",
+        "toTime": "17:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "12:00",
+        "toTime": "16:00"
+      }
+    ]
+  },
+  {
+    "name": "Assistant Amira",
+    "role": "ASSIST",
+    "phone": "01119876543",
+    "price": 115.0,
+    "location": "El-Shobra",
+    "availability": [
+      {
+        "day": "Sunday",
+        "fromTime": "08:00",
+        "toTime": "16:00"
+      },
+      {
+        "day": "Thursday",
+        "fromTime": "10:00",
+        "toTime": "15:00"
+      }
+    ]
+  },
+  {
+    "name": "Assistant Karim",
+    "role": "ASSIST",
+    "phone": "01223344556",
+    "price": 105.0,
+    "location": "El-Maadi",
+    "availability": [
+      {
+        "day": "Monday",
+        "fromTime": "12:00",
+        "toTime": "18:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "11:00",
+        "toTime": "17:00"
+      }
+    ]
+  },
+  {
+    "name": "Assistant Ahmed",
+    "role": "ASSIST",
+    "phone": "01001234567",
+    "price": 110.0,
+    "location": "El-Zamalek",
+    "availability": [
+      {
+        "day": "Tuesday",
+        "fromTime": "10:00",
+        "toTime": "18:00"
+      },
+      {
+        "day": "Saturday",
+        "fromTime": "09:00",
+        "toTime": "15:00"
+      }
+    ]
+  },
+  {
+    "name": "Assistant Sara",
+    "role": "ASSIST",
+    "phone": "01112345678",
+    "price": 120.0,
+    "location": "El-Mohandessin",
+    "availability": [
+      {
+        "day": "Wednesday",
+        "fromTime": "11:00",
+        "toTime": "17:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "12:00",
+        "toTime": "16:00"
+      }
+    ]
+  }
+]

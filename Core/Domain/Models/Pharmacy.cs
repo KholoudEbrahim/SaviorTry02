@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Models.OrderEntities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Models
 {
-    public class Pharmacy : BaseEntity<Guid> 
+    public class Pharmacy : BaseEntity
     {
         [Required]
         [StringLength(100)]
@@ -22,14 +23,17 @@ namespace Domain.Models
         public string Street { get; set; } = string.Empty;
 
         [Required]
-        public int BuildingNumber { get; set; }
+        public string BuildingNumber { get; set; } = string.Empty;
 
         [Required]
         public bool HasDelivery { get; set; }
 
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+
         // Navigation properties
-      //  public virtual ICollection<Supplies> Supplies { get; set; } = new List<Supplies>();
-        //public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+        public virtual ICollection<Supplies> Supplies { get; set; } = new List<Supplies>();
+        public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
     }
 
 }

@@ -1,0 +1,382 @@
+[
+  {
+    "name": "Dr. Mohamed Ali",
+    "role": "DOCTOR",
+    "phone": "01009876543",
+    "price": 500.0,
+    "location": "Zamalek",
+    "availability": [
+      {
+        "day": "Monday",
+        "fromTime": "09:00",
+        "toTime": "15:00"
+      },
+      {
+        "day": "Wednesday",
+        "fromTime": "10:00",
+        "toTime": "14:00"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Sara Hassan",
+    "role": "DOCTOR",
+    "phone": "01119876543",
+    "price": 550.0,
+    "location": "Mohandessin",
+    "availability": [
+      {
+        "day": "Tuesday",
+        "fromTime": "11:00",
+        "toTime": "17:00"
+      },
+      {
+        "day": "Thursday",
+        "fromTime": "12:00",
+        "toTime": "16:00"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Ahmed Samir",
+    "role": "DOCTOR",
+    "phone": "01229876543",
+    "price": 600.0,
+    "location": "Shobra",
+    "availability": [
+      {
+        "day": "Friday",
+        "fromTime": "08:00",
+        "toTime": "14:00"
+      },
+      {
+        "day": "Saturday",
+        "fromTime": "10:00",
+        "toTime": "18:00"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Dina Ahmed",
+    "role": "DOCTOR",
+    "phone": "01001122334",
+    "price": 520.0,
+    "location": "New Cairo",
+    "availability": [
+      {
+        "day": "Sunday",
+        "fromTime": "10:00",
+        "toTime": "18:00"
+      },
+      {
+        "day": "Tuesday",
+        "fromTime": "09:00",
+        "toTime": "15:00"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Amira Youssef",
+    "role": "DOCTOR",
+    "phone": "01112233445",
+    "price": 570.0,
+    "location": "Tagamo3",
+    "availability": [
+      {
+        "day": "Monday",
+        "fromTime": "12:00",
+        "toTime": "18:00"
+      },
+      {
+        "day": "Thursday",
+        "fromTime": "11:00",
+        "toTime": "17:00"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Karim Ali",
+    "role": "DOCTOR",
+    "phone": "01223344556",
+    "price": 620.0,
+    "location": "Madinty",
+    "availability": [
+      {
+        "day": "Wednesday",
+        "fromTime": "09:00",
+        "toTime": "15:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "12:00",
+        "toTime": "20:00"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Nada Omar",
+    "role": "DOCTOR",
+    "phone": "01001234567",
+    "price": 540.0,
+    "location": "October City",
+    "availability": [
+      {
+        "day": "Sunday",
+        "fromTime": "08:00",
+        "toTime": "16:00"
+      },
+      {
+        "day": "Tuesday",
+        "fromTime": "10:00",
+        "toTime": "15:00"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Hala Tamer",
+    "role": "DOCTOR",
+    "phone": "01112345678",
+    "price": 580.0,
+    "location": "Sheikh Zayed",
+    "availability": [
+      {
+        "day": "Wednesday",
+        "fromTime": "11:00",
+        "toTime": "17:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "13:00",
+        "toTime": "20:00"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Omar Rania",
+    "role": "DOCTOR",
+    "phone": "01223456789",
+    "price": 610.0,
+    "location": "Rehab City",
+    "availability": [
+      {
+        "day": "Monday",
+        "fromTime": "09:00",
+        "toTime": "15:00"
+      },
+      {
+        "day": "Thursday",
+        "fromTime": "12:00",
+        "toTime": "16:00"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Rania Mona",
+    "role": "DOCTOR",
+    "phone": "01009876543",
+    "price": 530.0,
+    "location": "Obour City",
+    "availability": [
+      {
+        "day": "Tuesday",
+        "fromTime": "10:00",
+        "toTime": "18:00"
+      },
+      {
+        "day": "Saturday",
+        "fromTime": "08:00",
+        "toTime": "14:00"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Tamer Khaled",
+    "role": "DOCTOR",
+    "phone": "01119876543",
+    "price": 590.0,
+    "location": "El-Shorouk",
+    "availability": [
+      {
+        "day": "Wednesday",
+        "fromTime": "09:00",
+        "toTime": "17:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "11:00",
+        "toTime": "15:00"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Mona Aya",
+    "role": "DOCTOR",
+    "phone": "01229876543",
+    "price": 540.0,
+    "location": "El-Haram",
+    "availability": [
+      {
+        "day": "Sunday",
+        "fromTime": "12:00",
+        "toTime": "18:00"
+      },
+      {
+        "day": "Thursday",
+        "fromTime": "10:00",
+        "toTime": "16:00"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Khaled Mohamed",
+    "role": "DOCTOR",
+    "phone": "01001122334",
+    "price": 630.0,
+    "location": "El-Dokki",
+    "availability": [
+      {
+        "day": "Monday",
+        "fromTime": "08:00",
+        "toTime": "14:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "13:00",
+        "toTime": "20:00"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Aya Yara",
+    "role": "DOCTOR",
+    "phone": "01112233445",
+    "price": 550.0,
+    "location": "El-Maadi",
+    "availability": [
+      {
+        "day": "Tuesday",
+        "fromTime": "10:00",
+        "toTime": "18:00"
+      },
+      {
+        "day": "Saturday",
+        "fromTime": "09:00",
+        "toTime": "15:00"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Mohamed Adam",
+    "role": "DOCTOR",
+    "phone": "01223344556",
+    "price": 570.0,
+    "location": "El-Nozha",
+    "availability": [
+      {
+        "day": "Wednesday",
+        "fromTime": "11:00",
+        "toTime": "17:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "12:00",
+        "toTime": "16:00"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Yara Sara",
+    "role": "DOCTOR",
+    "phone": "01001234567",
+    "price": 600.0,
+    "location": "El-Marg",
+    "availability": [
+      {
+        "day": "Sunday",
+        "fromTime": "08:00",
+        "toTime": "16:00"
+      },
+      {
+        "day": "Thursday",
+        "fromTime": "10:00",
+        "toTime": "15:00"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Adam Ahmed",
+    "role": "DOCTOR",
+    "phone": "01112345678",
+    "price": 580.0,
+    "location": "El-Agouza",
+    "availability": [
+      {
+        "day": "Monday",
+        "fromTime": "12:00",
+        "toTime": "18:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "11:00",
+        "toTime": "17:00"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Ahmed Dina",
+    "role": "DOCTOR",
+    "phone": "01223456789",
+    "price": 560.0,
+    "location": "El-Zamalek",
+    "availability": [
+      {
+        "day": "Tuesday",
+        "fromTime": "10:00",
+        "toTime": "18:00"
+      },
+      {
+        "day": "Saturday",
+        "fromTime": "09:00",
+        "toTime": "15:00"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Sara Amira",
+    "role": "DOCTOR",
+    "phone": "01009876543",
+    "price": 590.0,
+    "location": "El-Mohandessin",
+    "availability": [
+      {
+        "day": "Wednesday",
+        "fromTime": "11:00",
+        "toTime": "17:00"
+      },
+      {
+        "day": "Friday",
+        "fromTime": "12:00",
+        "toTime": "16:00"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Amira Karim",
+    "role": "DOCTOR",
+    "phone": "01119876543",
+    "price": 610.0,
+    "location": "El-Shobra",
+    "availability": [
+      {
+        "day": "Sunday",
+        "fromTime": "08:00",
+        "toTime": "16:00"
+      },
+      {
+        "day": "Thursday",
+        "fromTime": "10:00",
+        "toTime": "15:00"
+      }
+    ]
+  }
+]

@@ -1,0 +1,396 @@
+[
+  {
+    "Name": "AERIUS",
+    "Description": "Used for allergy relief. Long-acting and non-sedating antihistamine.",
+    "StripPrice": 15.00,
+    "BoxPrice": 90.00,
+    "Image": "images/medicines/aerius.png"
+  },
+  {
+    "Name": "Alkapress",
+    "Description": "Used for treating high blood pressure. Contains Amlodipine base.",
+    "StripPrice": 12.00,
+    "BoxPrice": 72.00,
+    "Image": "images/medicines/alkapress.png"
+  },
+  {
+    "Name": "Alphintern",
+    "Description": "Anti-inflammatory and anti-edematous medication.",
+    "StripPrice": 20.00,
+    "BoxPrice": 120.00,
+    "Image": "images/medicines/alphintern.png"
+  },
+  {
+    "Name": "Amaryl",
+    "Description": "Used for managing type 2 diabetes. Contains Glimepiride.",
+    "StripPrice": 28.00,
+    "BoxPrice": 108.00,
+    "Image": "images/medicines/amaryl.png"
+  },
+  {
+    "Name": "Antinal",
+    "Description": "Used for treating diarrhea. Contains Nifuroxazide.",
+    "StripPrice": 15.00,
+    "BoxPrice": 60.00,
+    "Image": "images/medicines/antinal.png"
+  },
+  {
+    "Name": "Antodine",
+    "Description": "Used for treating gastritis and duodenitis. Contains Famotidine.",
+    "StripPrice": 14.00,
+    "BoxPrice": 84.00,
+    "Image": "images/medicines/antodine.png"
+  },
+  {
+    "Name": "ASPIRIN PROTECT",
+    "Description": "Used for preventing heart attacks and strokes. Contains Acetylsalicylic acid.",
+    "StripPrice": 8.00,
+    "BoxPrice": 48.00,
+    "Image": "images/medicines/aspirin_protect.png"
+  },
+  {
+    "Name": "ATOR",
+    "Description": "Used for lowering cholesterol. Contains Atorvastatin.",
+    "StripPrice": 25.00,
+    "BoxPrice": 150.00,
+    "Image": "images/medicines/ator.png"
+  },
+  {
+    "Name": "Augmentin",
+    "Description": "Antibiotic used for treating bacterial infections. Contains Amoxicillin and Clavulanate Potassium.",
+    "StripPrice": 30.00,
+    "BoxPrice": 180.00,
+    "Image": "images/medicines/augmentin.png"
+  },
+  {
+    "Name": "Bactroban",
+    "Description": "Antibacterial cream for skin infections. Contains Mupirocin.",
+    "StripPrice": null,
+    "BoxPrice": 22.00,
+    "Image": "images/medicines/bactroban.png"
+  },
+  {
+    "Name": "Bendax",
+    "Description": "Anthelmintic used for treating parasitic worm infections.",
+    "StripPrice": 16.00,
+    "BoxPrice": 96.00,
+    "Image": "images/medicines/bendax.png"
+  },
+  {
+    "Name": "Bepanthen",
+    "Description": "Moisturizing cream for healing damaged and irritated skin.",
+    "StripPrice": null,
+    "BoxPrice": 20.00,
+    "Image": "images/medicines/bepanthen.png"
+  },
+  {
+    "Name": "BETADINE",
+    "Description": "Antiseptic solution for disinfecting skin and wounds.",
+    "StripPrice": null,
+    "BoxPrice": 76.00,
+    "Image": "images/medicines/betadine.png"
+  },
+  {
+    "Name": "Biltricide",
+    "Description": "Used for treating parasitic infections like schistosomiasis.",
+    "StripPrice": 40.00,
+    "BoxPrice": 240.00,
+    "Image": "images/medicines/biltricide.png"
+  },
+  {
+    "Name": "bonjela",
+    "Description": "Gel for relieving pain and swelling from mouth ulcers.",
+    "StripPrice": null,
+    "BoxPrice": 23.5,
+    "Image": "images/medicines/bonjela.png"
+  },
+  {
+    "Name": "BRUFEN",
+    "Description": "Used for pain relief, fever reduction, and inflammation treatment.",
+    "StripPrice": 10.00,
+    "BoxPrice": 60.00,
+    "Image": "images/medicines/brufen.png"
+  },
+  {
+    "Name": "Buscopan",
+    "Description": "Relieves abdominal pain, discomfort, and cramps.",
+    "StripPrice": 14.00,
+    "BoxPrice": 84.00,
+    "Image": "images/medicines/buscopan.png"
+  },
+  {
+    "Name": "Cataflam",
+    "Description": "Anti-inflammatory and analgesic for pain relief.",
+    "StripPrice": 25.00,
+    "BoxPrice": 150.00,
+    "Image": "images/medicines/cataflam.png"
+  },
+  {
+    "Name": "CEFOTAX",
+    "Description": "Broad-spectrum antibiotic for intramuscular or intravenous injection.",
+    "StripPrice": null,
+    "BoxPrice": 50.00,
+
+    "Image": "images/medicines/cefotax.png"
+  },
+  {
+    "Name": "Ciprofloxacin",
+    "Description": "Broad-spectrum antibiotic for treating bacterial infections.",
+    "StripPrice": 30.00,
+    "BoxPrice": 180.00,
+    "Image": "images/medicines/ciprofloxacin.png"
+  },
+  {
+    "Name": "Norvasc",
+    "Description": "Used for treating high blood pressure. Contains Amlodipine Besylate.",
+    "StripPrice": 50.00,
+    "BoxPrice": 300.00,
+    "Image": "images/medicines/norvasc.png"
+  },
+  {
+    "Name": "Amosar",
+    "Description": "Used for treating hypertension. Contains Losartan Potassium.",
+    "StripPrice": 15.00,
+    "BoxPrice": 150.00,
+    "Image": "images/medicines/amosar.png"
+  },
+  {
+    "Name": "Cozaar",
+    "Description": "Used for treating hypertension. Contains Losartan Potassium.",
+    "StripPrice": 20.00,
+    "BoxPrice": 200.00,
+    "Image": "images/medicines/cozaar.png"
+  },
+  {
+    "Name": "Daonil",
+    "Description": "Oral hypoglycemic agent for diabetes. Contains Glibenclamide.",
+    "StripPrice": 18.00,
+    "BoxPrice": 180.00,
+    "Image": "images/medicines/daonil.png"
+  },
+  {
+    "Name": "Diabride",
+    "Description": "Used for managing type 2 diabetes. Contains Glimepiride.",
+    "StripPrice": 14.00,
+    "BoxPrice": 140.00,
+    "Image": "images/medicines/diabride.png"
+  },
+  {
+    "Name": "Doliprane",
+    "Description": "Pain reliever and fever reducer. Contains Paracetamol.",
+    "StripPrice": 10.00,
+    "BoxPrice": 100.00,
+    "Image": "images/medicines/doliprane.png"
+  },
+  {
+    "Name": "Enalapril",
+    "Description": "Used for treating high blood pressure and heart failure.",
+    "StripPrice": 12.00,
+    "BoxPrice": 120.00,
+    "Image": "images/medicines/enalapril.png"
+  },
+  {
+    "Name": "Adrenalin",
+    "Description": "Epinephrine injection used for anaphylaxis or cardiac arrest.",
+    "StripPrice": null,
+    "BoxPrice": 300.00,
+    "Image": "images/medicines/adrenalin.png"
+  },
+  {
+    "Name": "Equate Lansoprazole",
+    "Description": "Delayed-release capsules for treating frequent heartburn.",
+    "StripPrice": 25.00,
+    "BoxPrice": 250.00,
+    "Image": "images/medicines/equate_lansoprazole.png"
+  },
+  {
+    "Name": "Erythromycin",
+    "Description": "Antibiotic used for treating bacterial infections.",
+    "StripPrice": 20.00,
+    "BoxPrice": 200.00,
+    "Image": "images/medicines/erythromycin.png"
+  },
+  {
+    "Name": "Esomeprazole",
+    "Description": "Proton pump inhibitor for reducing stomach acid.",
+    "StripPrice": 22.00,
+    "BoxPrice": 220.00,
+    "Image": "images/medicines/esomeprazole.png"
+  },
+  {
+    "Name": "Euthyrox",
+    "Description": "Thyroid hormone replacement therapy. Contains Levothyroxine.",
+    "StripPrice": 30.00,
+    "BoxPrice": 300.00,
+    "Image": "images/medicines/euthyrox.png"
+  },
+  {
+    "Name": "EZAPRIL-CO",
+    "Description": "Combination drug for hypertension. Contains Enalapril and Hydrochlorothiazide.",
+    "StripPrice": 25.00,
+    "BoxPrice": 250.00,
+    "Image": "images/medicines/ezapril_co.png"
+  },
+  {
+    "Name": "Fexofenadine",
+    "Description": "Antihistamine for allergy relief.",
+    "StripPrice": 18.00,
+    "BoxPrice": 180.00,
+    "Image": "images/medicines/fexofenadine.png"
+  },
+  {
+    "Name": "FLIXONASE AQUEOUS NASAL",
+    "Description": "Nasal spray for treating allergic rhinitis.",
+    "StripPrice": null,
+    "BoxPrice": 150.00,
+    "Image": "images/medicines/flixonase.png"
+  },
+  {
+    "Name": "Gabapentin",
+    "Description": "Used for treating epilepsy and neuropathic pain.",
+    "StripPrice": 20.00,
+    "BoxPrice": 200.00,
+    "Image": "images/medicines/gabapentin.png"
+  },
+  {
+    "Name": "Griseofulvin",
+    "Description": "Antifungal medication for treating skin infections.",
+    "StripPrice": 16.00,
+    "BoxPrice": 160.00,
+    "Image": "images/medicines/griseofulvin.png"
+  },
+  {
+    "Name": "Haloperidol Decanoate",
+    "Description": "Antipsychotic injection for schizophrenia.",
+    "StripPrice": null,
+    "BoxPrice": 350.00,
+    "Image": "images/medicines/haloperidol_decanoate.png"
+  },
+  {
+    "Name": "Ketoprofen",
+    "Description": "Anti-inflammatory and analgesic.",
+    "StripPrice": 18.00,
+    "BoxPrice": 180.00,
+    "Image": "images/medicines/ketoprofen.png"
+  },
+  {
+    "Name": "Labetalol Hydrochloride",
+    "Description": "Intravenous solution for treating hypertension.",
+    "StripPrice": null,
+    "BoxPrice": 280.00,
+    "Image": "images/medicines/labetalol.png"
+  },
+  {
+    "Name": "Lansoprazole",
+    "Description": "Delayed-release pellets for reducing stomach acid.",
+    "StripPrice": 25.00,
+    "BoxPrice": 250.00,
+    "Image": "images/medicines/lansoprazole.png"
+  },
+  {
+    "Name": "Lasix",
+    "Description": "Diuretic for treating edema and hypertension. Contains Furosemide.",
+    "StripPrice": 14.00,
+    "BoxPrice": 140.00,
+    "Image": "images/medicines/lasix.png"
+  },
+  {
+    "Name": "Levcet",
+    "Description": "Antiallergic oral solution.",
+    "StripPrice": null,
+    "BoxPrice": 120.00,
+    "Image": "images/medicines/levcet.png"
+  },
+  {
+    "Name": "Levofloxacin",
+    "Description": "Antibiotic for treating bacterial infections.",
+    "StripPrice": 30.00,
+    "BoxPrice": 300.00,
+    "Image": "images/medicines/levofloxacin.png"
+  },
+  {
+    "Name": "Levohistam",
+    "Description": "Antihistamine oral drops for allergy relief.",
+    "StripPrice": null,
+    "BoxPrice": 100.00,
+    "Image": "images/medicines/Levohistam.png"
+  },
+  {
+    "Name": "Loratadine",
+    "Description": "Non-drowsy antihistamine for allergy relief.",
+    "StripPrice": 12.00,
+    "BoxPrice": 120.00,
+    "Image": "images/medicines/loratadine.png"
+  },
+  {
+    "Name": "Meloxicam",
+    "Description": "Anti-inflammatory, analgesic, and antirheumatic.",
+    "StripPrice": 20.00,
+    "BoxPrice": 200.00,
+    "Image": "images/medicines/melocam.png"
+  },
+  {
+    "Name": "Myofen Chlorzoxazone + Ibuprofen",
+    "Description": "Muscle relaxant and analgesic combination.",
+    "StripPrice": 18.00,
+    "BoxPrice": 180.00,
+    "Image": "images/medicines/myofen.png"
+  },
+  {
+    "Name": "NEURONTIN",
+    "Description": "Anticonvulsant for treating epilepsy and neuropathic pain.",
+    "StripPrice": 25.00,
+    "BoxPrice": 250.00,
+    "Image": "images/medicines/neurontin.png"
+  },
+  {
+    "Name": "Panadol Extra",
+    "Description": "Pain reliever and fever reducer. Contains Paracetamol.",
+    "StripPrice": 30.00,
+    "BoxPrice": 110.00,
+    "Image": "images/medicines/panadol_extra.png"
+  },
+  {
+    "Name": "Paracetamol",
+    "Description": "Pain reliever and fever reducer.",
+    "StripPrice": 18.00,
+    "BoxPrice": 80.00,
+    "Image": "images/medicines/paracetamol.png"
+  },
+  {
+    "Name": "Panadol advance",
+    "Description": "Pain reliever and fever reducer.",
+    "StripPrice": 28.00,
+    "BoxPrice": 90.00,
+    "Image": "images/medicines/panadol_advance.png"
+  },
+  {
+    "Name": "Sarcozide",
+    "Description": "Antihypertensive containing Candesartan and Hydrochlorothiazide.",
+    "StripPrice": 22.00,
+    "BoxPrice": 220.00,
+    "Image": "images/medicines/sarcozide.png"
+  },
+  {
+    "Name": "Telfast",
+    "Description": "Antihistamine for allergy relief. Contains Fexofenadine.",
+    "StripPrice": 18.00,
+    "BoxPrice": 180.00,
+    "Image": "images/medicines/telfast.png"
+  },
+  {
+    "Name": "Triactin",
+    "Description": "Antihistamine for allergy relief. Contains Cyproheptadine.",
+    "StripPrice": 14.00,
+    "BoxPrice": 140.00,
+    "Image": "images/medicines/triactin.png"
+  },
+  {
+    "Name": "Zollipak",
+    "Description": "Delayed-release capsules for reducing stomach acid.",
+    "StripPrice": 25.00,
+    "BoxPrice": 250.00,
+    "Image": "images/medicines/zollipak.png"
+  }
+
+]

@@ -1,0 +1,299 @@
+ [
+    {
+      "Name": "Ezz Eldeen Pharmacy",
+      "Street": "Arabella Mall, Shop No. 7, Ground Floor",
+      "BuildingNumber": "7",
+      "City": "Cairo",
+      "Phone": "01020015055",
+      "Latitude": 30.008550,
+      "Longitude": 31.416940
+    },
+    {
+      "Name": "Qasem Pharmacy & Cosmetics",
+      "Street": "Al Hamd Mall, 79 Axis",
+      "BuildingNumber": "79",
+      "City": "Cairo",
+      "Phone": "0226184021",
+      "Latitude": 30.010456,
+      "Longitude": 31.418872
+    },
+    {
+      "Name": "El Ezaby Pharmacy",
+      "Street": "9 El Haram St",
+      "BuildingNumber": "9",
+      "City": "Giza",
+      "Phone": "01123456789",
+      "Latitude": 30.02013,
+      "Longitude": 31.21074
+    },
+    {
+      "Name": "Al-Dakhiliya Pharmacy",
+      "Street": "10 Abdel Khalek Tharwat St",
+      "BuildingNumber": "10",
+      "City": "Cairo",
+      "Phone": "01234567890",
+      "Latitude": 30.0467,
+      "Longitude": 31.2355
+    },
+    {
+      "Name": "Ghazal Pharmacy",
+      "Street": "2 Shubra St",
+      "BuildingNumber": "2",
+      "City": "Cairo",
+      "Phone": "01010987654",
+      "Latitude": 30.0661,
+      "Longitude": 31.2399
+    },
+    {
+      "Name": "El-Manar Pharmacy",
+      "Street": "25 El-Tahrir St",
+      "BuildingNumber": "25",
+      "City": "Cairo",
+      "Phone": "01122334455",
+      "Latitude": 30.0345,
+      "Longitude": 31.2486
+    },
+    {
+      "Name": "Al-Wahy Pharmacy",
+      "Street": "32 Mohandessin St",
+      "BuildingNumber": "32",
+      "City": "Giza",
+      "Phone": "01023456789",
+      "Latitude": 30.0406,
+      "Longitude": 31.2210
+    },
+    {
+      "Name": "Sayed Abdel Kader Pharmacy",
+      "Street": "16 Cairo Alexandria Desert Rd",
+      "BuildingNumber": "16",
+      "City": "Giza",
+      "Phone": "01234567891",
+      "Latitude": 30.0543,
+      "Longitude": 31.1968
+    },
+    {
+      "Name": "Medicare Pharmacy",
+      "Street": "18 Nasr City St",
+      "BuildingNumber": "18",
+      "City": "Cairo",
+      "Phone": "01034567890",
+      "Latitude": 30.0605,
+      "Longitude": 31.3008
+    },
+    {
+      "Name": "Cairo Health Pharmacy",
+      "Street": "54 El-Tahrir St",
+      "BuildingNumber": "54",
+      "City": "Cairo",
+      "Phone": "01156789012",
+      "Latitude": 30.0391,
+      "Longitude": 31.2671
+    },
+    {
+      "Name": "Al-Ahly Pharmacy",
+      "Street": "35 Dokki St",
+      "BuildingNumber": "35",
+      "City": "Giza",
+      "Phone": "01087654321",
+      "Latitude": 30.0336,
+      "Longitude": 31.2129
+    },
+    {
+      "Name": "Dr. Ahmed Pharmacy",
+      "Street": "22 Sayeda Zainab St",
+      "BuildingNumber": "22",
+      "City": "Cairo",
+      "Phone": "01212121212",
+      "Latitude": 30.0445,
+      "Longitude": 31.2419
+    },
+    {
+      "Name": "El-Harbi Pharmacy",
+      "Street": "27 Ramses St",
+      "BuildingNumber": "27",
+      "City": "Cairo",
+      "Phone": "01056345678",
+      "Latitude": 30.0627,
+      "Longitude": 31.2345
+    },
+    {
+      "Name": "Golden Pharmacy",
+      "Street": "11 Nasr City St",
+      "BuildingNumber": "11",
+      "City": "Cairo",
+      "Phone": "01209876543",
+      "Latitude": 30.0552,
+      "Longitude": 31.2748
+    },
+    {
+      "Name": "New Cairo Pharmacy",
+      "Street": "New Cairo",
+      "BuildingNumber": "N/A",
+      "City": "Cairo",
+      "Phone": "01113579246",
+      "Latitude": 30.0291,
+      "Longitude": 31.5019
+    },
+    {
+      "Name": "Mansour Pharmacy",
+      "Street": "23 El-Maadi St",
+      "BuildingNumber": "23",
+      "City": "Cairo",
+      "Phone": "01225678943",
+      "Latitude": 30.0107,
+      "Longitude": 31.2810
+    },
+    {
+      "Name": "Al-Fayrouz Pharmacy",
+      "Street": "7 Cairo Alexandria Rd",
+      "BuildingNumber": "7",
+      "City": "Giza",
+      "Phone": "01010293847",
+      "Latitude": 30.0755,
+      "Longitude": 31.1682
+    },
+    {
+      "Name": "Delta Pharmacy",
+      "Street": "56 El-Ahram St",
+      "BuildingNumber": "56",
+      "City": "Giza",
+      "Phone": "01020020022",
+      "Latitude": 30.0167,
+      "Longitude": 31.2147
+    },
+    {
+      "Name": "El-Hassan Pharmacy",
+      "Street": "2 Giza St",
+      "BuildingNumber": "2",
+      "City": "Giza",
+      "Phone": "01222334455",
+      "Latitude": 30.0725,
+      "Longitude": 31.2136
+    },
+    {
+      "Name": "Zayed Pharmacy",
+      "Street": "90 Mohandessin St",
+      "BuildingNumber": "90",
+      "City": "Cairo",
+      "Phone": "01054321098",
+      "Latitude": 30.0523,
+      "Longitude": 31.2235
+    },
+    {
+      "Name": "El-Waha Pharmacy",
+      "Street": "15 Tahrir Square",
+      "BuildingNumber": "15",
+      "City": "Cairo",
+      "Phone": "01198765432",
+      "Latitude": 30.0398,
+      "Longitude": 31.2311
+    },
+    {
+      "Name": "Pioneer Pharmacy",
+      "Street": "17 Garden City St",
+      "BuildingNumber": "17",
+      "City": "Cairo",
+      "Phone": "01018887766",
+      "Latitude": 30.0334,
+      "Longitude": 31.2433
+    },
+    {
+      "Name": "City Life Pharmacy",
+      "Street": "24 El-Maadi St",
+      "BuildingNumber": "24",
+      "City": "Cairo",
+      "Phone": "01211223344",
+      "Latitude": 30.0088,
+      "Longitude": 31.2825
+    },
+    {
+      "Name": "Al-Mokhtar Pharmacy",
+      "Street": "45 El Haram St",
+      "BuildingNumber": "45",
+      "City": "Giza",
+      "Phone": "01098765432",
+      "Latitude": 30.0701,
+      "Longitude": 31.2198
+    },
+    {
+      "Name": "Sama Pharmacy",
+      "Street": "13 Tahrir St",
+      "BuildingNumber": "13",
+      "City": "Cairo",
+      "Phone": "01234455667",
+      "Latitude": 30.0390,
+      "Longitude": 31.2374
+    },
+    {
+      "Name": "Royal Pharmacy",
+      "Street": "21 Dokki St",
+      "BuildingNumber": "21",
+      "City": "Giza",
+      "Phone": "01056837482",
+      "Latitude": 30.0535,
+      "Longitude": 31.2248
+    },
+    {
+      "Name": "El-Mokhtar Cairo Pharmacy",
+      "Street": "59 Nasr City St",
+      "BuildingNumber": "59",
+      "City": "Cairo",
+      "Phone": "01275648856",
+      "Latitude": 30.0225,
+      "Longitude": 31.3010
+    },
+    {
+      "Name": "El-Nour Pharmacy",
+      "Street": "30 Tahrir St",
+      "BuildingNumber": "30",
+      "City": "Cairo",
+      "Phone": "01023569874",
+      "Latitude": 30.0294,
+      "Longitude": 31.2212
+    },
+    {
+      "Name": "Lina Pharmacy",
+      "Street": "25 El-Maadi St",
+      "BuildingNumber": "25",
+      "City": "Cairo",
+      "Phone": "01234567896",
+      "Latitude": 30.0145,
+      "Longitude": 31.2890
+    },
+    {
+      "Name": "Al-Mostafa Pharmacy",
+      "Street": "17 Mohandessin St",
+      "BuildingNumber": "17",
+      "City": "Giza",
+      "Phone": "01069873429",
+      "Latitude": 30.0489,
+      "Longitude": 31.2215
+    },
+    {
+      "Name": "Mekki Pharmacy",
+      "Street": "3 Shobra St",
+      "BuildingNumber": "3",
+      "City": "Cairo",
+      "Phone": "01124567890",
+      "Latitude": 30.0706,
+      "Longitude": 31.2490
+    },
+    {
+      "Name": "Badr Pharmacy",
+      "Street": "5 Giza St",
+      "BuildingNumber": "5",
+      "City": "Giza",
+      "Phone": "01256834829",
+      "Latitude": 30.0453,
+      "Longitude": 31.2227
+    },
+    {
+      "Name": "Zain Pharmacy",
+      "Street": "8 El Haram St",
+      "BuildingNumber": "8",
+      "City": "Cairo",
+      "Phone": "01025567892",
+      "Latitude": 30.0334,
+      "Longitude": 31.2345
+    }
+  ]

@@ -1,0 +1,51 @@
+[
+  {
+    "Name": "Ahmed Mahmoud",
+    "Phone": "01020015055",
+    "Area": "Cairo - Downtown",
+    "Latitude": 30.0467,
+    "Longitude": 31.2355
+  },
+  {
+    "Name": "Mohamed Ali",
+    "Phone": "01234567890",
+    "Area": "Cairo - Nasr City",
+    "Latitude": 30.0605,
+    "Longitude": 31.3008
+  },
+  {
+    "Name": "Sara Hassan",
+    "Phone": "01123456789",
+    "Area": "Cairo - Maadi",
+    "Latitude": 30.0107,
+    "Longitude": 31.2810
+  },
+  {
+    "Name": "Khaled Mohamed",
+    "Phone": "01098765432",
+    "Area": "Giza - Mohandessin",
+    "Latitude": 30.0406,
+    "Longitude": 31.2210
+  },
+  {
+    "Name": "Fatma Ahmed",
+    "Phone": "01222334455",
+    "Area": "Giza - Haram",
+    "Latitude": 30.0701,
+    "Longitude": 31.2198
+  },
+  {
+    "Name": "Ali Samir",
+    "Phone": "01056789012",
+    "Area": "Cairo - New Cairo",
+    "Latitude": 30.0291,
+    "Longitude": 31.5019
+  },
+  {
+    "Name": "Nada Karim",
+    "Phone": "01112233445",
+    "Area": "Giza - Dokki",
+    "Latitude": 30.0336,
+    "Longitude": 31.2129
+  }
+]
