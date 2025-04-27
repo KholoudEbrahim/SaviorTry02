@@ -10,8 +10,8 @@ namespace ServicesAbstractions
 {
     public interface ICartService
     {
-        Task AddToCartAsync(int userID, int medicineID, int quantity);
+        Task AddToCartAsync(int userID, int medicineID, int quantity, string priceType = "Strip");
         Task RemoveFromCartAsync(int userID, int medicineID);
-        Task<CartResponse> GetCartAsync(int userID); 
+        Task<CartResponse> GetCartAsync(int userID);
     }
 }

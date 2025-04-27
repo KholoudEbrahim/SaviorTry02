@@ -23,7 +23,7 @@ namespace Services
         }
 
         // Add Medicine to Cart
-        public async Task AddToCartAsync(int userID, int medicineID, int quantity)
+        public async Task AddToCartAsync(int userID, int medicineID, int quantity, string priceType = "Strip")
         {
             if (quantity <= 0)
             {
@@ -32,7 +32,22 @@ namespace Services
 
             var cart = await GetOrCreateCartAsync(userID);
 
-            var existingItem = cart.Items.FirstOrDefault(item => item.MedicineID == medicineID);
+     
+            var medicine = await _unitOfWork.Medicines.GetByIdAsync(medicineID);
+            if (medicine == null)
+            {
+                throw new ArgumentException("Medicine not found.");
+            }
+
+          
+            decimal selectedPrice = priceType switch
+            {
+                "Strip" => medicine.StripPrice ?? throw new Exception("Strip price is not set for this medicine."),
+                "Box" => medicine.BoxPrice ?? throw new Exception("Box price is not set for this medicine."),
+                _ => throw new ArgumentException("Invalid price type.")
+            };
+
+            var existingItem = cart.Items.FirstOrDefault(item => item.MedicineID == medicineID && item.PriceType == priceType);
             if (existingItem != null)
             {
                 existingItem.Quantity += quantity;
@@ -42,7 +57,9 @@ namespace Services
                 cart.Items.Add(new CartItem
                 {
                     MedicineID = medicineID,
-                    Quantity = quantity
+                    Quantity = quantity,
+                    Price = selectedPrice, 
+                    PriceType = priceType  
                 });
             }
 

@@ -13,5 +13,6 @@ namespace ServicesAbstractions
         Task<Emergency> GetEmergencyByIdAsync(int id);
         Task<IEnumerable<Emergency>> GetAllEmergenciesAsync();
         Task<IEnumerable<Emergency>> GetEmergenciesByUserIdAsync(int userId);
+
     }
 }

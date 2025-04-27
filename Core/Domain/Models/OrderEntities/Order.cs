@@ -22,12 +22,11 @@ namespace Domain.Models.OrderEntities
         public decimal ShippingPrice { get; set; } 
         public decimal TotalPrice { get; set; }
         public DateTime OrderDate { get; set; } = DateTime.UtcNow;
-        [Required]
         public PaymentForOrder PaymentWay { get; set; }
         public string? DeliveryName { get; set; }
         public string? DeliveryPhone { get; set; }
         // Navigation properties
-        public virtual ICollection<OrderItem> OrderItems { get; set; }
+        public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 
     }
 }

@@ -2,6 +2,7 @@
 using Domain.Contracts;
 using Domain.Models;
 using Domain.Models.CartEntities;
+using Domain.Models.Enumerations;
 using Domain.Models.OrderEntities;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
@@ -25,8 +26,12 @@ namespace Savior.Web
             builder.Services.AddDbContext<SaviorDbContext>(options =>
             {
                 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-                options.UseSqlServer(connectionString);
+                options.UseSqlServer(connectionString)
+                       .LogTo(Console.WriteLine, LogLevel.Information)
+                       .EnableSensitiveDataLogging();
             });
+
+
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             builder.Services.AddScoped<IGenericRepository<Pharmacy>, GenericRepository<Pharmacy>>();
             builder.Services.AddScoped<IGenericRepository<Medicine>, GenericRepository<Medicine>>();
@@ -36,8 +41,8 @@ namespace Savior.Web
             builder.Services.AddScoped<IGenericRepository<Emergency>, GenericRepository<Emergency>>();
             builder.Services.AddScoped<IGenericRepository<MedicalStaffMember>, GenericRepository<MedicalStaffMember>>();
 
-
-
+            builder.Services.AddLogging();
+            builder.Services.AddLogging(configure => configure.AddConsole());
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
@@ -51,7 +56,13 @@ namespace Savior.Web
             builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddScoped<IEmergencyService, EmergencyService>();
             builder.Services.AddScoped<IMedicalStaffMemberService, MedicalStaffMemberService>();
-              
+
+            builder.Services.AddControllers()
+      .AddJsonOptions(options =>
+      {
+          options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+          options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+      });
 
 
             builder.Services.AddAutoMapper(typeof(PharmacyProfile).Assembly);
@@ -65,6 +76,17 @@ namespace Savior.Web
 
 
             builder.Services.AddScoped<IDbInitializer, DbInitializer>();
+
+
+            builder.Services.AddSwaggerGen(options =>
+            {
+                options.DescribeAllParametersInCamelCase();
+                options.SchemaFilter<EnumSchemaFilter>(); 
+ 
+                options.CustomSchemaIds(type => type.FullName);
+            });
+
+
 
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

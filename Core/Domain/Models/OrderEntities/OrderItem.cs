@@ -14,6 +14,7 @@ namespace Domain.Models.OrderEntities
         public decimal Price { get; set; }
 
         // Navigation Properties
+        public virtual Order Order { get; set; } = null!;
         public virtual Medicine Medicine { get; set; } = null!;
     }
 }

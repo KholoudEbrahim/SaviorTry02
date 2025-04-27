@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,12 +11,15 @@ namespace Domain.Models.CartEntities
     {
         public int MedicineID { get; set; }
         public int Quantity { get; set; }
+
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
 
-        // Foreign key for Cart
-        public int CartId { get; set; } // This represents the Id of the associated Cart
+        public string PriceType { get; set; } = "Strip";
 
-        // Navigation properties
+        // Foreign key for Cart
+        public int CartId { get; set; }
+
         public Medicine Medicine { get; set; } = null!;
         public virtual Cart Cart { get; set; } = null!;
     }

@@ -1,6 +1,7 @@
 ﻿using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using ServicesAbstractions;
+using Shared.EmergencyDTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,21 @@ namespace Presentation.Controllers
         }
 
         [HttpPost("request")]
-        public async Task<IActionResult> CreateEmergency([FromBody] Emergency emergency)
+        public async Task<IActionResult> CreateEmergency([FromBody] EmergencyRequest request)
         {
-            var createdEmergency = await _emergencyService.CreateEmergencyAsync(emergency);
+            if (request == null)
+            {
+                return BadRequest("Invalid emergency data.");
+            }
+            var emergency = new Emergency
+            {
+                UserID = request.UserID,
+                Location = request.Location,
+                Type = request.Type,
+                IsConfirmed = request.IsConfirmed
+            };
+          
+            var createdEmergency = await _emergencyService.CreateEmergencyAsync(emergency);     
             return CreatedAtAction(nameof(GetEmergencyById), new { id = createdEmergency.Id }, createdEmergency);
         }
 

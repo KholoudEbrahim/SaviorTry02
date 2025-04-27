@@ -19,6 +19,8 @@ namespace Services.MappingProfiles
             CreateMap<CartItem, CartItemResponse>()
                 .ForMember(dest => dest.MedicineName, opt => opt.MapFrom(src => src.Medicine.Name))
                 .ForMember(dest => dest.TotalPrice, opt => opt.MapFrom(src => src.Quantity * src.Price));
+
+
         }
     }
 }

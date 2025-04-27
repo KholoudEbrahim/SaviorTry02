@@ -8,8 +8,8 @@ namespace Domain.Models.Enumerations
 {
     public enum EmergencyType
     {
-        ACCIDENT,
-        FIRE,
-        LATE_NIGHT_EMERGENCY
+        ACCIDENT = 0,
+        FIRE = 1,
+        LATE_NIGHT_EMERGENCY = 2
     }
 }

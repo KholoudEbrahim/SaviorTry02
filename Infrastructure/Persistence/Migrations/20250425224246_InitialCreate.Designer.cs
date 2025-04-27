@@ -12,8 +12,8 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(SaviorDbContext))]
-    [Migration("20250421224133_CreateOrderModule")]
-    partial class CreateOrderModule
+    [Migration("20250425224246_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,148 @@ namespace Persistence.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Domain.Models.AvailabilityEntry", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Day")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FromTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MedicalStaffMemberId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ToTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MedicalStaffMemberId");
+
+                    b.ToTable("AvailabilityEntries");
+                });
+
+            modelBuilder.Entity("Domain.Models.CartEntities.Cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("Domain.Models.CartEntities.CartItem", b =>
+                {
+                    b.Property<int>("MedicineID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CartId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("MedicineID", "CartId");
+
+                    b.HasIndex("CartId");
+
+                    b.ToTable("CartItem");
+                });
+
+            modelBuilder.Entity("Domain.Models.Emergency", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<TimeSpan>("Duration")
+                        .HasColumnType("time");
+
+                    b.Property<bool>("IsConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Emergencies");
+                });
+
+            modelBuilder.Entity("Domain.Models.MedicalStaffMember", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MedicalStaffMembers", (string)null);
+                });
 
             modelBuilder.Entity("Domain.Models.Medicine", b =>
                 {
@@ -131,11 +273,20 @@ namespace Persistence.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("PaymentWay")
                         .HasColumnType("int");
 
                     b.Property<int?>("PharmacyId")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("ShippingPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -152,6 +303,8 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("PharmacyId");
+
+                    b.HasIndex("UserID");
 
                     b.ToTable("Orders");
                 });
@@ -262,17 +415,97 @@ namespace Persistence.Migrations
                     b.ToTable("Supplies");
                 });
 
+            modelBuilder.Entity("Domain.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Fname")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Lname")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Domain.Models.AvailabilityEntry", b =>
+                {
+                    b.HasOne("Domain.Models.MedicalStaffMember", "MedicalStaffMember")
+                        .WithMany("Availability")
+                        .HasForeignKey("MedicalStaffMemberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MedicalStaffMember");
+                });
+
+            modelBuilder.Entity("Domain.Models.CartEntities.CartItem", b =>
+                {
+                    b.HasOne("Domain.Models.CartEntities.Cart", "Cart")
+                        .WithMany("Items")
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Models.Medicine", "Medicine")
+                        .WithMany()
+                        .HasForeignKey("MedicineID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
+
+                    b.Navigation("Medicine");
+                });
+
             modelBuilder.Entity("Domain.Models.OrderEntities.Order", b =>
                 {
                     b.HasOne("Domain.Models.Pharmacy", null)
                         .WithMany("Orders")
                         .HasForeignKey("PharmacyId");
+
+                    b.HasOne("Domain.Models.User", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.Models.OrderEntities.OrderItem", b =>
                 {
                     b.HasOne("Domain.Models.Medicine", "Medicine")
-                        .WithMany()
+                        .WithMany("OrderItems")
                         .HasForeignKey("MedicineID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -305,8 +538,20 @@ namespace Persistence.Migrations
                     b.Navigation("Pharmacy");
                 });
 
+            modelBuilder.Entity("Domain.Models.CartEntities.Cart", b =>
+                {
+                    b.Navigation("Items");
+                });
+
+            modelBuilder.Entity("Domain.Models.MedicalStaffMember", b =>
+                {
+                    b.Navigation("Availability");
+                });
+
             modelBuilder.Entity("Domain.Models.Medicine", b =>
                 {
+                    b.Navigation("OrderItems");
+
                     b.Navigation("Supplies");
                 });
 
@@ -320,6 +565,11 @@ namespace Persistence.Migrations
                     b.Navigation("Orders");
 
                     b.Navigation("Supplies");
+                });
+
+            modelBuilder.Entity("Domain.Models.User", b =>
+                {
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

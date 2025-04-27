@@ -12,8 +12,8 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(SaviorDbContext))]
-    [Migration("20250422033550_EmergencyModule")]
-    partial class EmergencyModule
+    [Migration("20250426203219_UpdateOrderID")]
+    partial class UpdateOrderID
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,7 +52,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("MedicalStaffMemberId");
 
-                    b.ToTable("AvailabilityEntry");
+                    b.ToTable("AvailabilityEntries");
                 });
 
             modelBuilder.Entity("Domain.Models.CartEntities.Cart", b =>
@@ -89,7 +89,7 @@ namespace Persistence.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -142,16 +142,7 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Models.MedicalStaffMember", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Location")
                         .IsRequired()
@@ -166,17 +157,14 @@ namespace Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<int>("Role")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("Id");
 
-                    b.ToTable("MedicalStaffMembers");
+                    b.ToTable("MedicalStaffMembers", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.Medicine", b =>
@@ -285,11 +273,20 @@ namespace Persistence.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("PaymentWay")
                         .HasColumnType("int");
 
                     b.Property<int?>("PharmacyId")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("ShippingPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -306,6 +303,8 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("PharmacyId");
+
+                    b.HasIndex("UserID");
 
                     b.ToTable("Orders");
                 });
@@ -327,6 +326,9 @@ namespace Persistence.Migrations
                     b.Property<int>("MedicineID")
                         .HasColumnType("int");
 
+                    b.Property<int?>("MedicineId")
+                        .HasColumnType("int");
+
                     b.Property<int>("OrderID")
                         .HasColumnType("int");
 
@@ -342,6 +344,8 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("MedicineID");
+
+                    b.HasIndex("MedicineId");
 
                     b.HasIndex("OrderID");
 
@@ -416,6 +420,50 @@ namespace Persistence.Migrations
                     b.ToTable("Supplies");
                 });
 
+            modelBuilder.Entity("Domain.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Fname")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Lname")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("Domain.Models.AvailabilityEntry", b =>
                 {
                     b.HasOne("Domain.Models.MedicalStaffMember", "MedicalStaffMember")
@@ -451,6 +499,12 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.Models.Pharmacy", null)
                         .WithMany("Orders")
                         .HasForeignKey("PharmacyId");
+
+                    b.HasOne("Domain.Models.User", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.Models.OrderEntities.OrderItem", b =>
@@ -461,13 +515,19 @@ namespace Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Models.OrderEntities.Order", null)
+                    b.HasOne("Domain.Models.Medicine", null)
+                        .WithMany("OrderItems")
+                        .HasForeignKey("MedicineId");
+
+                    b.HasOne("Domain.Models.OrderEntities.Order", "Order")
                         .WithMany("OrderItems")
                         .HasForeignKey("OrderID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Medicine");
+
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("Domain.Models.Supplies", b =>
@@ -501,6 +561,8 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Models.Medicine", b =>
                 {
+                    b.Navigation("OrderItems");
+
                     b.Navigation("Supplies");
                 });
 
@@ -514,6 +576,11 @@ namespace Persistence.Migrations
                     b.Navigation("Orders");
 
                     b.Navigation("Supplies");
+                });
+
+            modelBuilder.Entity("Domain.Models.User", b =>
+                {
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

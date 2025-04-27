@@ -26,8 +26,17 @@ namespace Presentation.Controllers
         {
             try
             {
-                await _cartService.AddToCartAsync(request.UserID, request.MedicineID, request.Quantity);
-                return Ok();
+                if (request == null || request.UserID <= 0 || request.MedicineID <= 0 || request.Quantity <= 0)
+                {
+                    return BadRequest("Invalid input data.");
+                }
+
+                await _cartService.AddToCartAsync(request.UserID, request.MedicineID, request.Quantity, request.PriceType);
+                return Ok("Item added to cart successfully.");
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest($"Invalid input: {ex.Message}");
             }
             catch (Exception ex)
             {

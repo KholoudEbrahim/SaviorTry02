@@ -1,5 +1,6 @@
 ﻿using Domain.Contracts;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Asn1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,12 @@ namespace Persistence.Repositories
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         protected readonly SaviorDbContext _context;
+                protected readonly DbSet<T> _dbSet;
 
         public GenericRepository(SaviorDbContext context)
         {
             _context = context;
+            _dbSet = _context.Set<T>();
         }
         public async Task<T?> GetByIdAsync(int id)
         {
@@ -59,6 +62,16 @@ namespace Persistence.Repositories
         {
             return await _context.Set<T>().FirstOrDefaultAsync(predicate);
         }
+        public async Task<T?> GetByIdAsync(int id, params Expression<Func<T, object>>[] includes)
+        {
+            IQueryable<T> query = _dbSet;
 
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+
+            return await query.FirstOrDefaultAsync(e => EF.Property<int>(e, "Id") == id);
+        }
     }
 }

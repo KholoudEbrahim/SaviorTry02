@@ -7,11 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Data\Seeding\availability.json" />
     <None Remove="Data\Seeding\medicines.json" />
     <None Remove="Data\Seeding\pharmacies.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Data\Seeding\availability.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Data\Seeding\medicines.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -39,5 +43,22 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\Seeding\assistants.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Seeding\deliveries.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Seeding\doctors.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Seeding\nurses.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties data_4seeding_4nurses_1json__JsonSchema="https://appliedengdesign.github.io/cnccodes-json-schema/draft/2022-07/schema" /></VisualStudio></ProjectExtensions>
 
 </Project>

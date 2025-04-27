@@ -32,8 +32,13 @@ namespace Presentation.Controllers
         public async Task<IActionResult> GetStaffMemberById(int id)
         {
             var staffMember = await _staffService.GetMedicalStaffMemberByIdAsync(id);
+            if (staffMember == null)
+            {
+                return NotFound($"Staff member with ID {id} not found.");
+            }
             return Ok(staffMember);
-        }
+        } 
+
 
         [HttpPost("create")]
         public async Task<IActionResult> CreateStaffMember([FromBody] MedicalStaffMember staffMember)

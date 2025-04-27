@@ -17,7 +17,9 @@ public interface IGenericRepository<T> where T : class
     void Update(T entity);
     void Remove(T entity);
     IQueryable<T> GetQueryable();
+
     Task<bool> AnyAsync(Expression<Func<T, bool>> predicate);
-}
+       Task<T?> GetByIdAsync(int id, params Expression<Func<T, object>>[] includes);
+    }
 
 }

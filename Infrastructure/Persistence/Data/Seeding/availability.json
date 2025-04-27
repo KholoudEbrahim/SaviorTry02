@@ -1,0 +1,363 @@
+[
+  
+    {
+      "day": "Monday",
+      "fromTime": "09:00",
+      "toTime": "15:00",
+      "medicalStaffMemberId": 1
+    },
+    {
+      "day": "Wednesday",
+      "fromTime": "10:00",
+      "toTime": "14:00",
+      "medicalStaffMemberId": 2
+    },
+    {
+      "day": "Tuesday",
+      "fromTime": "11:00",
+      "toTime": "17:00",
+      "medicalStaffMemberId": 3
+    },
+    {
+      "day": "Thursday",
+      "fromTime": "12:00",
+      "toTime": "16:00",
+      "medicalStaffMemberId": 4
+    },
+    {
+      "day": "Friday",
+      "fromTime": "08:00",
+      "toTime": "14:00",
+      "medicalStaffMemberId": 5
+    },
+    {
+      "day": "Saturday",
+      "fromTime": "10:00",
+      "toTime": "18:00",
+      "medicalStaffMemberId": 6
+    },
+    {
+      "day": "Sunday",
+      "fromTime": "08:00",
+      "toTime": "16:00",
+      "medicalStaffMemberId": 7
+    },
+    {
+      "day": "Tuesday",
+      "fromTime": "09:00",
+      "toTime": "15:00",
+      "medicalStaffMemberId": 8
+    },
+    {
+      "day": "Monday",
+      "fromTime": "10:00",
+      "toTime": "18:00",
+      "medicalStaffMemberId": 9
+    },
+    {
+      "day": "Thursday",
+      "fromTime": "11:00",
+      "toTime": "17:00",
+      "medicalStaffMemberId": 10
+    },
+    {
+      "day": "Wednesday",
+      "fromTime": "09:00",
+      "toTime": "15:00",
+      "medicalStaffMemberId": 11
+    },
+    {
+      "day": "Friday",
+      "fromTime": "12:00",
+      "toTime": "20:00",
+      "medicalStaffMemberId": 12
+    },
+    {
+      "day": "Monday",
+      "fromTime": "09:00",
+      "toTime": "15:00",
+      "medicalStaffMemberId": 13
+    },
+    {
+      "day": "Wednesday",
+      "fromTime": "10:00",
+      "toTime": "14:00",
+      "medicalStaffMemberId": 14
+    },
+    {
+      "day": "Tuesday",
+      "fromTime": "11:00",
+      "toTime": "17:00",
+      "medicalStaffMemberId": 15
+    },
+    {
+      "day": "Thursday",
+      "fromTime": "12:00",
+      "toTime": "16:00",
+      "medicalStaffMemberId": 16
+    },
+    {
+      "day": "Friday",
+      "fromTime": "08:00",
+      "toTime": "14:00",
+      "medicalStaffMemberId": 17
+    },
+    {
+      "day": "Saturday",
+      "fromTime": "10:00",
+      "toTime": "18:00",
+      "medicalStaffMemberId": 18
+    },
+    {
+      "day": "Sunday",
+      "fromTime": "08:00",
+      "toTime": "16:00",
+      "medicalStaffMemberId": 19
+    },
+    {
+      "day": "Tuesday",
+      "fromTime": "09:00",
+      "toTime": "15:00",
+      "medicalStaffMemberId": 20
+    },
+    {
+      "day": "Monday",
+      "fromTime": "10:00",
+      "toTime": "18:00",
+      "medicalStaffMemberId": 101
+    },
+    {
+      "day": "Thursday",
+      "fromTime": "11:00",
+      "toTime": "17:00",
+      "medicalStaffMemberId": 102
+    },
+    {
+      "day": "Wednesday",
+      "fromTime": "09:00",
+      "toTime": "15:00",
+      "medicalStaffMemberId": 103
+    },
+    {
+      "day": "Friday",
+      "fromTime": "12:00",
+      "toTime": "20:00",
+      "medicalStaffMemberId": 104
+    },
+    {
+      "day": "Monday",
+      "fromTime": "09:00",
+      "toTime": "15:00",
+      "medicalStaffMemberId": 105
+    },
+    {
+      "day": "Wednesday",
+      "fromTime": "10:00",
+      "toTime": "14:00",
+      "medicalStaffMemberId": 106
+    },
+    {
+      "day": "Tuesday",
+      "fromTime": "11:00",
+      "toTime": "17:00",
+      "medicalStaffMemberId": 107
+    },
+    {
+      "day": "Thursday",
+      "fromTime": "12:00",
+      "toTime": "16:00",
+      "medicalStaffMemberId": 107
+    },
+    {
+      "day": "Friday",
+      "fromTime": "08:00",
+      "toTime": "14:00",
+      "medicalStaffMemberId": 109
+    },
+    {
+      "day": "Saturday",
+      "fromTime": "10:00",
+      "toTime": "18:00",
+      "medicalStaffMemberId": 110
+    },
+    {
+      "day": "Sunday",
+      "fromTime": "08:00",
+      "toTime": "16:00",
+      "medicalStaffMemberId": 111
+    },
+    {
+      "day": "Tuesday",
+      "fromTime": "09:00",
+      "toTime": "15:00",
+      "medicalStaffMemberId": 112
+    },
+    {
+      "day": "Monday",
+      "fromTime": "10:00",
+      "toTime": "18:00",
+      "medicalStaffMemberId": 113
+    },
+    {
+      "day": "Thursday",
+      "fromTime": "11:00",
+      "toTime": "17:00",
+      "medicalStaffMemberId": 114
+    },
+    {
+      "day": "Wednesday",
+      "fromTime": "09:00",
+      "toTime": "15:00",
+      "medicalStaffMemberId": 115
+    },
+    {
+      "day": "Friday",
+      "fromTime": "12:00",
+      "toTime": "20:00",
+      "medicalStaffMemberId": 116
+    },
+    {
+      "day": "Monday",
+      "fromTime": "09:00",
+      "toTime": "15:00",
+      "medicalStaffMemberId": 117
+    },
+    {
+      "day": "Wednesday",
+      "fromTime": "10:00",
+      "toTime": "14:00",
+      "medicalStaffMemberId": 118
+    },
+    {
+      "day": "Tuesday",
+      "fromTime": "11:00",
+      "toTime": "17:00",
+      "medicalStaffMemberId": 119
+    },
+    {
+      "day": "Thursday",
+      "fromTime": "12:00",
+      "toTime": "16:00",
+      "medicalStaffMemberId": 120
+    },
+    {
+      "day": "Friday",
+      "fromTime": "08:00",
+      "toTime": "14:00",
+      "medicalStaffMemberId": 201
+    },
+    {
+      "day": "Saturday",
+      "fromTime": "10:00",
+      "toTime": "18:00",
+      "medicalStaffMemberId": 202
+    },
+    {
+      "day": "Sunday",
+      "fromTime": "08:00",
+      "toTime": "16:00",
+      "medicalStaffMemberId": 203
+    },
+    {
+      "day": "Tuesday",
+      "fromTime": "09:00",
+      "toTime": "15:00",
+      "medicalStaffMemberId": 204
+    },
+    {
+      "day": "Monday",
+      "fromTime": "10:00",
+      "toTime": "18:00",
+      "medicalStaffMemberId": 205
+    },
+    {
+      "day": "Thursday",
+      "fromTime": "11:00",
+      "toTime": "17:00",
+      "medicalStaffMemberId": 206
+    },
+    {
+      "day": "Monday",
+      "fromTime": "10:00",
+      "toTime": "18:00",
+      "medicalStaffMemberId": 207
+    },
+    {
+      "day": "Thursday",
+      "fromTime": "11:00",
+      "toTime": "17:00",
+      "medicalStaffMemberId": 208
+    },
+    {
+      "day": "Wednesday",
+      "fromTime": "09:00",
+      "toTime": "15:00",
+      "medicalStaffMemberId": 209
+    },
+    {
+      "day": "Monday",
+      "fromTime": "12:00",
+      "toTime": "20:00",
+      "medicalStaffMemberId": 210
+    },
+    {
+      "day": "Monday",
+      "fromTime": "09:00",
+      "toTime": "15:00",
+      "medicalStaffMemberId": 211
+    },
+    {
+      "day": "Wednesday",
+      "fromTime": "10:00",
+      "toTime": "19:00",
+      "medicalStaffMemberId": 212
+    },
+    {
+      "day": "Friday",
+      "fromTime": "11:00",
+      "toTime": "17:00",
+      "medicalStaffMemberId": 213
+    },
+    {
+      "day": "Thursday",
+      "fromTime": "12:00",
+      "toTime": "16:00",
+      "medicalStaffMemberId": 214
+    },
+    {
+      "day": "Friday",
+      "fromTime": "08:00",
+      "toTime": "14:00",
+      "medicalStaffMemberId": 215
+    },
+    {
+      "day": "Saturday",
+      "fromTime": "10:00",
+      "toTime": "18:00",
+      "medicalStaffMemberId": 216
+    },
+    {
+      "day": "Saturday",
+      "fromTime": "08:00",
+      "toTime": "11:00",
+      "medicalStaffMemberId": 217
+    },
+    {
+      "day": "Tuesday",
+      "fromTime": "09:00",
+      "toTime": "15:00",
+      "medicalStaffMemberId": 218
+    },
+    {
+      "day": "Sunday",
+      "fromTime": "10:00",
+      "toTime": "15:00",
+      "medicalStaffMemberId": 219
+    },
+    {
+      "day": "Tuesday",
+      "fromTime": "11:00",
+      "toTime": "19:00",
+      "medicalStaffMemberId": 220
+    }
+]

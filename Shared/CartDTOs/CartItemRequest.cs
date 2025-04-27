@@ -11,5 +11,6 @@ namespace Shared.CartDTOs
         public int UserID { get; set; }
         public int MedicineID { get; set; }
         public int Quantity { get; set; }
+        public string PriceType { get; set; } = "Strip";
     }
 }

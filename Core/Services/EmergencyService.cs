@@ -22,8 +22,16 @@ namespace Services
 
         public async Task<Emergency> CreateEmergencyAsync(Emergency emergency)
         {
+      
+            emergency.Id = 0;
+            Random random = new Random();
+            int minutes = random.Next(10, 36);
+            emergency.Duration = TimeSpan.FromMinutes(minutes);
+            emergency.CreatedAt = DateTime.UtcNow;
+            emergency.IsDeleted = false;
             await _emergencyRepository.AddAsync(emergency);
             await _unitOfWork.CompleteAsync();
+
             return emergency;
         }
 

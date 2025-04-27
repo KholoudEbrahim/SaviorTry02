@@ -1,4 +1,5 @@
-﻿using Domain.Models.Enumerations;
+﻿using Domain.Contracts;
+using Domain.Models.Enumerations;
 using Domain.Models.OrderEntities;
 using Microsoft.AspNetCore.Mvc;
 using ServicesAbstractions;
@@ -18,37 +19,47 @@ namespace Presentation.Controllers
     {
         private readonly IOrderService _orderService;
         private readonly ICartService _cartService;
-        public OrderController(IOrderService orderService, ICartService cartService)
+        private readonly IUnitOfWork _unitOfWork;
+
+        public OrderController(IOrderService orderService, ICartService cartService, IUnitOfWork unitOfWork)
         {
             _orderService = orderService;
             _cartService = cartService;
+            _unitOfWork = unitOfWork;
         }
 
-        // Checkout and Create an Order
         [HttpPost("checkout")]
         public async Task<IActionResult> Checkout([FromBody] CartCheckoutRequest request)
         {
             try
             {
-              
                 if (request == null || request.UserID <= 0)
-                {
                     return BadRequest("Invalid request data.");
-                }
-                              var cart = await _cartService.GetCartAsync(request.UserID);
+
+          
+                var user = await _unitOfWork.Users.GetByIdAsync(request.UserID);
+                if (user == null)
+                    return BadRequest("User not found.");
+
+    
+                Console.WriteLine($"Attempting checkout for user {request.UserID}");
+                Console.WriteLine($"Coordinates: {request.UserLatitude}, {request.UserLongitude}");
+
+                var cart = await _cartService.GetCartAsync(request.UserID);
                 if (cart == null || !cart.Items.Any())
                 {
+                    Console.WriteLine($"Cart for user {request.UserID} is empty");
                     return BadRequest("Cart is empty.");
                 }
 
-   
+                Console.WriteLine($"Cart contains {cart.Items.Count} items");
+
                 var orderItems = cart.Items.Select(item => new OrderItem
                 {
                     MedicineID = item.MedicineID,
                     Quantity = item.Quantity,
                     Price = item.Price
                 }).ToList();
-
 
                 var orderID = await _orderService.CreateOrderAsync(
                     request.UserID,
@@ -57,68 +68,55 @@ namespace Presentation.Controllers
                     orderItems
                 );
 
+                Console.WriteLine($"Order created with ID: {orderID}");
+
+                var newOrder = await _orderService.GetOrderDetailsAsync(orderID);
+
                 return CreatedAtAction(nameof(GetOrderDetails), new { id = orderID }, new
                 {
                     OrderId = orderID,
-                    Message = "Order created successfully. Payment method: Cash on delivery"
+                    Message = "Order created successfully",
+                    OrderDetails = newOrder
                 });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                Console.WriteLine($"Error during checkout: {ex.Message}");
+                return StatusCode(500, "An error occurred while processing your order.");
             }
         }
-
-
-
         [HttpPost("{orderId}/confirm")]
         public async Task<IActionResult> ConfirmOrder(int orderId)
         {
-            try
-            {
-                await _orderService.ConfirmOrderAsync(orderId);
-                return Ok(new { Message = "Order confirmed successfully" });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
-            }
-        }
-    
+            var order = await _unitOfWork.Orders.GetByIdAsync(orderId);
+            if (order == null)
+                return NotFound($"Order with ID {orderId} does not exist");
 
-        // Get Order Details
+            await _orderService.ConfirmOrderAsync(orderId);
+            var confirmedOrder = await _orderService.GetOrderDetailsAsync(orderId);
+
+            return Ok(new
+            {
+                Message = "Order confirmed successfully",
+                Order = confirmedOrder
+            });
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetOrderDetails(int id)
         {
-            try
-            {
-                var order = await _orderService.GetOrderDetailsAsync(id);
-                if (order == null) return NotFound();
-                return Ok(order);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
-            }
+            var order = await _orderService.GetOrderDetailsAsync(id);
+            if (order == null)
+                return NotFound($"Order with ID {id} not found.");
+
+            return Ok(order);
         }
 
-
-
-        // Get Past Orders for a User
         [HttpGet("past-orders/{userID}")]
         public async Task<IActionResult> GetPastOrders(int userID)
         {
-            try
-            {
-                var orders = await _orderService.GetPastOrdersAsync(userID);
-                return Ok(orders);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
-
-
-            }
+            var orders = await _orderService.GetPastOrdersAsync(userID);
+            return Ok(orders);
         }
     }
 }
