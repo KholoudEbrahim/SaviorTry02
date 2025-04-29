@@ -84,7 +84,7 @@ namespace Persistence
             modelBuilder.Entity<MedicalStaffMember>().ToTable("MedicalStaffMembers");
 
             // Configure AvailabilityEntry
-        
+
             modelBuilder.Entity<AvailabilityEntry>()
      .HasOne(ae => ae.MedicalStaffMember)
      .WithMany(msm => msm.Availability)
@@ -107,26 +107,32 @@ namespace Persistence
                 entity.Property(o => o.ShippingPrice).HasColumnType("decimal(18,2)");
                 entity.Property(o => o.TotalPrice).HasColumnType("decimal(18,2)");
 
-                // Relationship with OrderItems
-                entity.HasMany(o => o.OrderItems) 
-                      .WithOne(oi => oi.Order)   
-                      .HasForeignKey(oi => oi.OrderID) 
-                      .OnDelete(DeleteBehavior.Cascade); 
+                entity.HasMany(o => o.OrderItems)
+                      .WithOne(oi => oi.Order)
+                      .HasForeignKey(oi => oi.OrderID)
+                      .OnDelete(DeleteBehavior.Cascade);
             });
 
-            // Configure OrderItem
+
             modelBuilder.Entity<OrderItem>(entity =>
             {
                 entity.Property(oi => oi.Price).HasColumnType("decimal(18,2)");
 
-                // Relationship with Medicine (if exists)
+
+                entity.HasOne(oi => oi.Order)
+                      .WithMany(o => o.OrderItems)
+                      .HasForeignKey(oi => oi.OrderID)
+                      .OnDelete(DeleteBehavior.Cascade);
+
+                
                 entity.HasOne(oi => oi.Medicine)
-                      .WithMany()
-                      .HasForeignKey(oi => oi.MedicineID);
+                      .WithMany(m => m.OrderItems)
+                      .HasForeignKey(oi => oi.MedicineID)
+                      .OnDelete(DeleteBehavior.Restrict);
             });
 
-          
-        }
-    }
 
+        }
+
+    }
 }

@@ -8,8 +8,11 @@ using System.Threading.Tasks;
 
 namespace Domain.Models
 {
-    public class User : BaseEntity
+    public class User 
     {
+        [Key]
+        public int Id { get; set; }
+
         [Required]
         [StringLength(50)]
         public string Fname { get; set; } = string.Empty;
@@ -30,8 +33,15 @@ namespace Domain.Models
 
         [Required]
         public string Password { get; set; } = string.Empty;
+        public string ConfirmPassword { get; set; }
 
+        public string? ResetCode { get; set; }
+        public DateTime? ResetCodeExpiry { get; set; }
         public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+
+        public virtual ICollection<Emergency> EmergencyRequests { get; set; } = new List<Emergency>();
+        public virtual ICollection<MedicalStaffMember> MedicalStaffMembers { get; set; } = new List<MedicalStaffMember>();
+        public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
 
     }
 }

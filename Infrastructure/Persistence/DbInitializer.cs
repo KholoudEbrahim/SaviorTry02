@@ -38,10 +38,24 @@ public class DbInitializer(SaviorDbContext context) : IDbInitializer
             }
 
             // Seed Delivery Persons
+         
             if (!context.Set<DeliveryPerson>().Any())
             {
                 Console.WriteLine("Seeding Delivery Persons...");
-                await SeedEntities<DeliveryPerson>(context, seedingPath, "deliveries.json");
+                var seedingBasePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "Seeding");
+                var deliveryFilePath = Path.Combine(seedingBasePath, "deliveries.json");
+
+                if (File.Exists(deliveryFilePath))
+                {
+                    var jsonData = await File.ReadAllTextAsync(deliveryFilePath);
+                    var deliveryPersons = JsonSerializer.Deserialize<List<DeliveryPerson>>(jsonData);
+
+                    if (deliveryPersons?.Any() == true)
+                    {
+                        await context.Set<DeliveryPerson>().AddRangeAsync(deliveryPersons);
+                        await context.SaveChangesAsync();
+                    }
+                }
             }
 
             // Seed Medical Staff (Doctors, Nurses, Assistants)

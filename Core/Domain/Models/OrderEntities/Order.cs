@@ -25,6 +25,7 @@ namespace Domain.Models.OrderEntities
         public PaymentForOrder PaymentWay { get; set; }
         public string? DeliveryName { get; set; }
         public string? DeliveryPhone { get; set; }
+        public int? PharmacyId { get; set; }
         // Navigation properties
         public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 

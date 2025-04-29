@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence;
 
@@ -11,9 +12,11 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(SaviorDbContext))]
-    partial class SaviorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250428222832_UpdatePharmacyIdInOrder")]
+    partial class UpdatePharmacyIdInOrder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -393,6 +396,9 @@ namespace Persistence.Migrations
                     b.Property<int>("MedicineID")
                         .HasColumnType("int");
 
+                    b.Property<int?>("MedicineId")
+                        .HasColumnType("int");
+
                     b.Property<int>("OrderID")
                         .HasColumnType("int");
 
@@ -408,6 +414,8 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("MedicineID");
+
+                    b.HasIndex("MedicineId");
 
                     b.HasIndex("OrderID");
 
@@ -608,10 +616,14 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Models.OrderEntities.OrderItem", b =>
                 {
                     b.HasOne("Domain.Models.Medicine", "Medicine")
-                        .WithMany("OrderItems")
+                        .WithMany()
                         .HasForeignKey("MedicineID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Domain.Models.Medicine", null)
+                        .WithMany("OrderItems")
+                        .HasForeignKey("MedicineId");
 
                     b.HasOne("Domain.Models.OrderEntities.Order", "Order")
                         .WithMany("OrderItems")

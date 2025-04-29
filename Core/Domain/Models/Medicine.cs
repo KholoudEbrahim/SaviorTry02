@@ -26,6 +26,7 @@ namespace Domain.Models
 
         // Navigation properties
         public virtual ICollection<Supplies> Supplies { get; set; } = new List<Supplies>();
-        public virtual ICollection<OrderItem> OrderItems { get; set; }
+        public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+
     }
 }

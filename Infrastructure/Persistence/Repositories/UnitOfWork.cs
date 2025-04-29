@@ -24,6 +24,7 @@ namespace Persistence.Repositories
         public IGenericRepository<Emergency> Emergencies { get; private set; }
         public IGenericRepository<MedicalStaffMember> MedicalStaffMembers { get; private set; }
         public IGenericRepository<User> Users { get; }
+        public IGenericRepository<DeliveryPerson> DeliveryPersons { get; private set; }
 
         public UnitOfWork(SaviorDbContext context) // Change parameter type to SaviorDbContext
         {
@@ -37,6 +38,7 @@ namespace Persistence.Repositories
             Emergencies = new GenericRepository<Emergency>(_context);
             MedicalStaffMembers = new GenericRepository<MedicalStaffMember>(_context);
             Users = new GenericRepository<User>(_context);
+            DeliveryPersons = new GenericRepository<DeliveryPerson>(_context);
         }
 
         public async Task<int> CompleteAsync()

@@ -20,6 +20,7 @@ namespace Domain.Contracts
         IGenericRepository<Emergency> Emergencies { get; }
         IGenericRepository<MedicalStaffMember> MedicalStaffMembers { get; }
         IGenericRepository<User> Users { get; }
+        IGenericRepository<DeliveryPerson> DeliveryPersons { get; }
         Task<int> CompleteAsync();
     }
 }

@@ -18,12 +18,11 @@ namespace Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly INotificationService _notificationService;
+        private readonly NotificationService _notificationService;
         private readonly ILogger<OrderService> _logger;
-
         private const decimal FIXED_SHIPPING_PRICE = 20.00m;
 
-        public OrderService(IUnitOfWork unitOfWork, IMapper mapper, INotificationService notificationService, ILogger<OrderService> logger)
+        public OrderService(IUnitOfWork unitOfWork, IMapper mapper, NotificationService notificationService, ILogger<OrderService> logger)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -42,15 +41,11 @@ namespace Services
             if (firstItem == null)
                 throw new ArgumentException("Order items cannot be empty.");
 
-            var supply = await _unitOfWork.Supplies.FindAsync(s => s.MedicineId == firstItem.MedicineID);
-            var pharmacyId = supply.FirstOrDefault()?.PharmacyId;
-
-            if (!pharmacyId.HasValue)
-                throw new Exception("Could not determine pharmacy.");
-
-            var pharmacy = await _unitOfWork.Pharmacies.GetByIdAsync(pharmacyId.Value);
+            // Get any pharmacy (assuming all pharmacies have all medicines)
+            var pharmacies = await _unitOfWork.Pharmacies.GetAllAsync();
+            var pharmacy = pharmacies.FirstOrDefault();
             if (pharmacy == null)
-                throw new Exception("Pharmacy not found.");
+                throw new Exception("No pharmacy found.");
 
             var duration = CalculateDuration(userLatitude, userLongitude, pharmacy.Latitude, pharmacy.Longitude);
 
@@ -67,7 +62,8 @@ namespace Services
                 ShippingPrice = FIXED_SHIPPING_PRICE,
                 TotalPrice = totalPrice,
                 OrderDate = DateTime.UtcNow,
-                OrderItems = orderItems
+                OrderItems = orderItems,
+                PharmacyId = pharmacy?.Id 
             };
 
             if (!pharmacy.HasDelivery)
@@ -82,19 +78,42 @@ namespace Services
 
             return order.Id;
         }
+
         private DeliveryPerson AssignDeliveryPerson(double pharmacyLatitude, double pharmacyLongitude)
         {
+            try
+            {
 
-            var jsonData = File.ReadAllText("deliveries.json");
+                var deliveryPerson = _unitOfWork.DeliveryPersons
+                    .GetQueryable()
+                    .FirstOrDefault();
 
-            var deliveryPersons = JsonSerializer.Deserialize<List<DeliveryPerson>>(jsonData);
+                if (deliveryPerson != null)
+                {
+                    return deliveryPerson;
+                }
 
-            if (deliveryPersons == null || deliveryPersons.Count == 0)
-                throw new Exception("No delivery persons available.");
-            var selectedDeliveryPerson = deliveryPersons.First();
+                var seedingBasePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "Seeding");
+                var deliveryFilePath = Path.Combine(seedingBasePath, "deliveries.json");
 
-            return selectedDeliveryPerson;
+                if (!File.Exists(deliveryFilePath))
+                {
+                    throw new FileNotFoundException($"Delivery persons file not found at: {deliveryFilePath}");
+                }
+
+                var jsonData = File.ReadAllText(deliveryFilePath);
+                var deliveryPersons = JsonSerializer.Deserialize<List<DeliveryPerson>>(jsonData);
+
+                return deliveryPersons?.FirstOrDefault() ??
+                    throw new Exception("No delivery persons available");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error assigning delivery person");
+                throw;
+            }
         }
+
         public async Task<OrderResponse> GetOrderDetailsAsync(int orderID)
         {
             var order = await _unitOfWork.Orders.GetByIdAsync(orderID);
@@ -160,8 +179,6 @@ namespace Services
 
         private double ToRadians(double angle) => Math.PI * angle / 180.0;
 
-
-
         public async Task CancelOrderAsync(int orderID)
         {
             var order = await _unitOfWork.Orders.GetByIdAsync(orderID);
@@ -173,6 +190,7 @@ namespace Services
 
             _logger.LogInformation($"Order {orderID} has been cancelled.");
         }
+
         public decimal CalculateTotalPrice(List<OrderItem> orderItems)
         {
             if (orderItems == null || !orderItems.Any())
@@ -181,6 +199,5 @@ namespace Services
             decimal medicinesSubtotal = orderItems.Sum(item => item.Price * item.Quantity);
             return medicinesSubtotal + FIXED_SHIPPING_PRICE;
         }
-
     }
 }

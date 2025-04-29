@@ -61,12 +61,26 @@ namespace Presentation.Controllers
                     Price = item.Price
                 }).ToList();
 
+                Console.WriteLine($"Cart Items:");
+                foreach (var item in cart.Items)
+                {
+                    Console.WriteLine($"- MedicineID: {item.MedicineID}, Quantity: {item.Quantity}, Price: {item.Price}");
+                }
+
+
+                Console.WriteLine($"Order Items:");
+                foreach (var item in orderItems)
+                {
+                    Console.WriteLine($"- MedicineID: {item.MedicineID}, Quantity: {item.Quantity}, Price: {item.Price}");
+                }
+
                 var orderID = await _orderService.CreateOrderAsync(
                     request.UserID,
                     request.UserLatitude,
                     request.UserLongitude,
                     orderItems
                 );
+              
 
                 Console.WriteLine($"Order created with ID: {orderID}");
 

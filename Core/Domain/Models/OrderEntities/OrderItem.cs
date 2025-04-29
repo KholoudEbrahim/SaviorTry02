@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,10 @@ namespace Domain.Models.OrderEntities
         public decimal Price { get; set; }
 
         // Navigation Properties
+        [ForeignKey("OrderID")]
         public virtual Order Order { get; set; } = null!;
+
+        [ForeignKey("MedicineID")]
         public virtual Medicine Medicine { get; set; } = null!;
     }
 }

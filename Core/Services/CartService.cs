@@ -21,10 +21,9 @@ namespace Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-
-        // Add Medicine to Cart
         public async Task AddToCartAsync(int userID, int medicineID, int quantity, string priceType = "Strip")
         {
+            
             if (quantity <= 0)
             {
                 throw new ArgumentException("Quantity must be greater than zero.");
@@ -32,14 +31,14 @@ namespace Services
 
             var cart = await GetOrCreateCartAsync(userID);
 
-     
+
             var medicine = await _unitOfWork.Medicines.GetByIdAsync(medicineID);
             if (medicine == null)
             {
                 throw new ArgumentException("Medicine not found.");
             }
 
-          
+
             decimal selectedPrice = priceType switch
             {
                 "Strip" => medicine.StripPrice ?? throw new Exception("Strip price is not set for this medicine."),
@@ -50,22 +49,25 @@ namespace Services
             var existingItem = cart.Items.FirstOrDefault(item => item.MedicineID == medicineID && item.PriceType == priceType);
             if (existingItem != null)
             {
+                
                 existingItem.Quantity += quantity;
             }
             else
             {
+               
                 cart.Items.Add(new CartItem
                 {
                     MedicineID = medicineID,
                     Quantity = quantity,
-                    Price = selectedPrice, 
-                    PriceType = priceType  
+                    Price = selectedPrice,
+                    PriceType = priceType,
+                    Medicine = null 
                 });
             }
 
+         
             await _unitOfWork.CompleteAsync();
         }
-
         // Remove Medicine from Cart
         public async Task RemoveFromCartAsync(int userID, int medicineID)
         {
@@ -107,12 +109,21 @@ namespace Services
             return cart;
         }
 
+
         // Helper: Get Cart Entity only (internal use)
+        //private async Task<Cart> GetCartEntityAsync(int userID)
+        //{
+        //    var carts = await _unitOfWork.Carts.FindAsync(c => c.UserId == userID);
+        //    return carts.FirstOrDefault();
+        //}
+
         private async Task<Cart> GetCartEntityAsync(int userID)
         {
-            var carts = await _unitOfWork.Carts.FindAsync(c => c.UserId == userID);
-            return carts.FirstOrDefault();
+            return await _unitOfWork.Carts.FirstOrDefaultAsync(
+                c => c.UserId == userID,
+                c => c.Items);
         }
+
     }
 
 }

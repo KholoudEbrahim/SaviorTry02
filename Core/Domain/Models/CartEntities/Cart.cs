@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Domain.Models.CartEntities
 {
-    public class Cart : BaseEntity
-    {
+        public class Cart : BaseEntity
+        {
    
-        public int UserId { get; set; } 
+            public int UserId { get; set; } 
 
-        public List<CartItem> Items { get; set; } = new List<CartItem>();
+            public List<CartItem> Items { get; set; } = new List<CartItem>();
+        }
     }
-}

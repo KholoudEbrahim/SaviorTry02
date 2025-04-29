@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,8 @@ namespace Domain.Models.CartEntities
 {
     public class CartItem
     {
+        [Key]
+        public int CartItemID { get; set; }
         public int MedicineID { get; set; }
         public int Quantity { get; set; }
 
