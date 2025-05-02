@@ -11,6 +11,7 @@ namespace Shared.EmergencyDTOs
     {
         public int UserID { get; set; }
         public string Location { get; set; }
+        public string Phone { get; set; }
         public EmergencyType Type { get; set; }
         public bool IsConfirmed { get; set; }
     }

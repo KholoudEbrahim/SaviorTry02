@@ -14,6 +14,7 @@ namespace Shared.OrderDTOs
             public int UserID { get; set; }
             public double UserLatitude { get; set; }
             public double UserLongitude { get; set; }
+           public string Phone { get; set; }
             public PaymentForOrder PaymentWay { get; set; }
             public List<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
         }

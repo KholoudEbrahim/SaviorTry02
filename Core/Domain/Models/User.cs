@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,7 +34,9 @@ namespace Domain.Models
 
         [Required]
         public string Password { get; set; } = string.Empty;
-        public string ConfirmPassword { get; set; }
+        [NotMapped]
+        public string ConfirmPassword { get; set; } = string.Empty;
+
 
         public string? ResetCode { get; set; }
         public DateTime? ResetCodeExpiry { get; set; }

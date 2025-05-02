@@ -7,6 +7,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Domain.Contracts;
 using Domain.Models;
+using Domain.Models.CartEntities;
 using Domain.Models.Enumerations;
 using Domain.Models.OrderEntities;
 using Microsoft.EntityFrameworkCore;
@@ -16,13 +17,36 @@ public class DbInitializer(SaviorDbContext context) : IDbInitializer
 {
     public async Task InitializerAsync()
     {
-        try
-        {
+        using (var transaction = await context.Database.BeginTransactionAsync())
+
+            try
+            {
             Console.WriteLine("Starting DB Initialization...");
 
             var basePath = AppDomain.CurrentDomain.BaseDirectory;
             var seedingPath = Path.Combine(basePath, "Data", "Seeding");
 
+            // Seed Users if empty
+            if (!context.Set<User>().Any())
+            {
+                Console.WriteLine("Seeding Users...");
+                var adminUser = new User
+                {
+                    Fname = "Admin",
+                    Lname = "User",
+                    Email = "admin@example.com",
+                    Phone = "01234567890",
+                    Password = "password123",
+                    ConfirmPassword = "password123"
+                };
+                await context.Set<User>().AddAsync(adminUser);
+                await context.SaveChangesAsync(); 
+            }
+
+        
+            var user = await context.Set<User>().FirstOrDefaultAsync();
+            if (user == null)
+                throw new Exception("User seeding failed!");
             // Seed Pharmacies
             if (!context.Set<Pharmacy>().Any())
             {
@@ -38,12 +62,10 @@ public class DbInitializer(SaviorDbContext context) : IDbInitializer
             }
 
             // Seed Delivery Persons
-         
             if (!context.Set<DeliveryPerson>().Any())
             {
                 Console.WriteLine("Seeding Delivery Persons...");
-                var seedingBasePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "Seeding");
-                var deliveryFilePath = Path.Combine(seedingBasePath, "deliveries.json");
+                var deliveryFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "Seeding", "deliveries.json");
 
                 if (File.Exists(deliveryFilePath))
                 {
@@ -78,20 +100,13 @@ public class DbInitializer(SaviorDbContext context) : IDbInitializer
             }
 
             // Seed Availability Entries
-            await context.SaveChangesAsync();
-
-            // AvailabilityEntries
             if (!context.Set<AvailabilityEntry>().Any())
             {
                 Console.WriteLine("Seeding Availability Entries...");
                 var availabilityFilePath = Path.Combine(seedingPath, "availability.json");
                 var availabilityData = await File.ReadAllTextAsync(availabilityFilePath);
 
-                var options = new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                };
-
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
                 var availabilityEntries = JsonSerializer.Deserialize<List<AvailabilityEntry>>(availabilityData, options);
 
                 if (availabilityEntries is not null && availabilityEntries.Any())
@@ -123,47 +138,58 @@ public class DbInitializer(SaviorDbContext context) : IDbInitializer
                     Console.WriteLine($"Seeded {validEntries.Count} Availability Entries.");
                 }
             }
+              //seed Cart
+                //var cart = new Cart
+                //{
+                //    UserId = user.Id,
+                //    Items = new List<CartItem>()
+                //};
+                //context.Carts.Add(cart);
+                //await context.SaveChangesAsync();
 
-            // Seed Orders (Optional)
-            if (!context.Orders.Any())
+
+                // Seed Orders (Optional)
+                if (!context.Orders.Any())
             {
                 Console.WriteLine("Seeding Orders...");
-                var orders = new List<Order>
+                var medicine = await context.Set<Medicine>().FirstOrDefaultAsync();
+                if (medicine == null)
+                    throw new Exception("No medicines found to seed orders!");
+
+                var order = new Order
                 {
-                    new Order
+                    UserID = user.Id, 
+                    UserLatitude = 30.0444,
+                    UserLongitude = 31.2357,
+                    OrderDate = DateTime.UtcNow,
+                    TotalPrice = 100.00m,
+                    OrderItems = new List<OrderItem>
                     {
-                        UserID = 1,
-                        UserLatitude = 30.0444,
-                        UserLongitude = 31.2357,
-                        OrderDate = DateTime.UtcNow,
-                        TotalPrice = 100.00m,
-                        OrderItems = new List<OrderItem>
+                        new OrderItem
                         {
-                            new OrderItem
-                            {
-                                MedicineID = 1, // Ensure this ID exists in the Medicines table
-                                Quantity = 2,
-                                Price = 50.00m
-                            }
+                            MedicineID = medicine.Id, 
+                            Quantity = 2,
+                            Price = 50.00m
                         }
                     }
                 };
-
-                context.Orders.AddRange(orders);
-                await context.SaveChangesAsync();
-                Console.WriteLine("Orders seeded.");
+                await context.Orders.AddAsync(order);
             }
+
+            await context.SaveChangesAsync();
+            await transaction.CommitAsync(); 
+            Console.WriteLine("Database seeded successfully!");
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Error during DB seeding: {ex.Message}");
+            throw;
         }
     }
 
     private async Task SeedEntities<T>(SaviorDbContext context, string seedingPath, string fileName) where T : class
     {
         var filePath = Path.Combine(seedingPath, fileName);
-
         var data = await File.ReadAllTextAsync(filePath);
         var objects = JsonSerializer.Deserialize<List<T>>(data);
 
@@ -180,18 +206,11 @@ public class DbInitializer(SaviorDbContext context) : IDbInitializer
 
         try
         {
-            // Log the file path for debugging
-            Console.WriteLine($"Reading file from path: {filePath}");
-
-            // Read the file content
             var data = await File.ReadAllTextAsync(filePath);
-            Console.WriteLine($"File content: {data}"); // Log the file content
-
-            // Deserialize the JSON data
             var options = new JsonSerializerOptions
             {
-                PropertyNameCaseInsensitive = true, // Ignore case sensitivity
-                AllowTrailingCommas = true // Allow trailing commas in JSON
+                PropertyNameCaseInsensitive = true,
+                AllowTrailingCommas = true
             };
 
             var staffMembers = JsonSerializer.Deserialize<List<MedicalStaffMember>>(data, options);
@@ -204,9 +223,6 @@ public class DbInitializer(SaviorDbContext context) : IDbInitializer
             foreach (var staff in staffMembers)
             {
                 staff.Role = role;
-
-                // Log each staff member's details for debugging
-                Console.WriteLine($"Processing staff member: ID={staff.Id}, Name={staff.Name}, Phone={staff.Phone}");
 
                 if (string.IsNullOrEmpty(staff.Name))
                 {
@@ -225,7 +241,6 @@ public class DbInitializer(SaviorDbContext context) : IDbInitializer
         catch (Exception ex)
         {
             Console.WriteLine($"Error seeding medical staff from file {fileName}: {ex.Message}");
-
             throw;
         }
     }

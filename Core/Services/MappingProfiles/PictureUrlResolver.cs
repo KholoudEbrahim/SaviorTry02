@@ -16,7 +16,6 @@ namespace Services.MappingProfiles
         {
             if (string.IsNullOrWhiteSpace(source.Image)) return string.Empty;
 
-            // Concat Base URL with the relative path
             return $"{configuration["BaseUrl"]}{source.Image}";
         }
     }

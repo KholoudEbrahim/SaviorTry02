@@ -54,7 +54,8 @@ namespace Persistence
                 .HasKey(c => c.Id);
 
             modelBuilder.Entity<CartItem>()
-                .HasKey(ci => new { ci.MedicineID, ci.CartId });
+    .HasKey(ci => ci.CartItemID);
+
 
             modelBuilder.Entity<CartItem>()
                 .HasOne(ci => ci.Cart)

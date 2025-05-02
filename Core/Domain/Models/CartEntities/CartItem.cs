@@ -11,6 +11,7 @@ namespace Domain.Models.CartEntities
     public class CartItem
     {
         [Key]
+
         public int CartItemID { get; set; }
         public int MedicineID { get; set; }
         public int Quantity { get; set; }
