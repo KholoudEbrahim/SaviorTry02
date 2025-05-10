@@ -50,7 +50,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                await _cartService.RemoveFromCartAsync(request.UserID, request.MedicineID);
+                await _cartService.RemoveFromCartAsync(request.UserID, request.MedicineID, request.PriceType);
                 return Ok();
             }
             catch (Exception ex)
@@ -68,6 +68,27 @@ namespace Presentation.Controllers
                 var cart = await _cartService.GetCartAsync(userID);
                 if (cart == null) return NotFound("Cart not found.");
                 return Ok(cart);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+        [HttpDelete("clear-all")]
+        public async Task<IActionResult> ClearCart([FromBody] ClearCartRequest request)
+        {
+            try
+            {
+                
+                if (request == null || request.UserID <= 0)
+                {
+                    return BadRequest("Invalid user ID.");
+                }
+
+                
+                await _cartService.ClearCartAsync(request.UserID);
+
+                return Ok(new { Message = "Cart cleared successfully." });
             }
             catch (Exception ex)
             {

@@ -199,5 +199,10 @@ namespace Services
             decimal medicinesSubtotal = orderItems.Sum(item => item.Price * item.Quantity);
             return medicinesSubtotal + FIXED_SHIPPING_PRICE;
         }
+        public async Task<IEnumerable<OrderResponse>> GetAllOrdersAsync()
+        {
+            var orders = await _unitOfWork.Orders.GetAllAsync();
+            return _mapper.Map<IEnumerable<OrderResponse>>(orders);
+        }
     }
 }

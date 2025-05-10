@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace Presentation.Controllers
 {
@@ -37,7 +38,7 @@ namespace Presentation.Controllers
                 return NotFound($"Staff member with ID {id} not found.");
             }
             return Ok(staffMember);
-        } 
+        }
 
 
         [HttpPost("create")]
@@ -45,6 +46,26 @@ namespace Presentation.Controllers
         {
             var createdStaffMember = await _staffService.CreateMedicalStaffMemberAsync(staffMember);
             return CreatedAtAction(nameof(GetStaffMemberById), new { id = createdStaffMember.Id }, createdStaffMember);
+        }
+    
+         [HttpGet("all")]
+        public async Task<IActionResult> GetAllMedicalStaff()
+        {
+
+
+            try
+            {
+                var staffMembers = await _staffService.GetAllMedicalStaffAsync();
+                if (!staffMembers.Any())
+                {
+                    return NotFound("No medical staff members found.");
+                }
+                return Ok(staffMembers);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"An error occurred: {ex.Message}");
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Domain.Models
 {
     public class Emergency : BaseEntity
     {
-        public int UserID { get; set; } // Foreign key to User (if exists)
+        public int UserID { get; set; } 
         public string Location { get; set; }
         public TimeSpan Duration { get; set; }
         public EmergencyType Type { get; set; }

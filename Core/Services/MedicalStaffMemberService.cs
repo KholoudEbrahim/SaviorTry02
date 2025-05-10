@@ -44,7 +44,12 @@ namespace Services
                 s.Role == role &&
                 s.Availability.Any(a => a.Day == day));
         }
-       
+
+        public async Task<IEnumerable<MedicalStaffMember>> GetAllMedicalStaffAsync()
+        {
+            return await _staffRepository.GetAllAsync(); 
+        }
+
     }
     
 }

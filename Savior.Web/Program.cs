@@ -58,6 +58,10 @@ namespace Savior.Web
             builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddScoped<IEmergencyService, EmergencyService>();
             builder.Services.AddScoped<IMedicalStaffMemberService, MedicalStaffMemberService>();
+            builder.Services.AddHttpClient<ChatService>();
+
+
+
 
             // JWT Authentication
             var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"] ?? throw new InvalidOperationException("JWT Key is missing!"));
@@ -119,7 +123,19 @@ namespace Savior.Web
                 }
             });
             });
-       
+
+            var MyAllowSpecificOrigins = "AllowFrontend";
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  policy =>
+                                  {
+                                      policy.WithOrigins("http://localhost:4200", "https://savior-mu.vercel.app")
+                                            .AllowAnyHeader()
+                                            .AllowAnyMethod();
+                                  });
+            });
 
             var app = builder.Build();
 
@@ -129,6 +145,8 @@ namespace Savior.Web
 
             app.UseStaticFiles();
             app.UseHttpsRedirection();
+
+            app.UseCors("AllowFrontend");
 
             app.UseAuthentication(); 
             app.UseAuthorization();

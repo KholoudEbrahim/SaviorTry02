@@ -88,5 +88,21 @@ namespace Persistence.Repositories
 
             return await query.FirstOrDefaultAsync(predicate);
         }
+
+
+        public async Task<T?> FirstOrDefaultWithIncludesAsync(
+    Expression<Func<T, bool>> predicate,
+    Func<IQueryable<T>, IQueryable<T>> includes)
+        {
+            IQueryable<T> query = _dbSet;
+
+            if (includes != null)
+            {
+                query = includes(query);
+            }
+
+            return await query.FirstOrDefaultAsync(predicate);
+        }
+
     }
 }

@@ -25,6 +25,11 @@ public interface IGenericRepository<T> where T : class
         Task<T?> FirstOrDefaultAsync(
       Expression<Func<T, bool>> predicate,
       params Expression<Func<T, object>>[] includes);
+
+        Task<T?> FirstOrDefaultWithIncludesAsync(
+    Expression<Func<T, bool>> predicate,
+    Func<IQueryable<T>, IQueryable<T>> includes);
+
     }
 
 }

@@ -17,5 +17,6 @@ namespace ServicesAbstractions
         Task ConfirmOrderAsync(int orderID);
         Task CancelOrderAsync(int orderID);
         decimal CalculateTotalPrice(List<OrderItem> orderItems);
+        Task<IEnumerable<OrderResponse>> GetAllOrdersAsync();
     }
 }

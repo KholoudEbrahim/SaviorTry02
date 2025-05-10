@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Domain.Contracts;
 using Domain.Models.CartEntities;
+using Microsoft.EntityFrameworkCore;
 using ServicesAbstractions;
 using Shared.CartDTOs;
 using System;
@@ -23,7 +24,6 @@ namespace Services
         }
         public async Task AddToCartAsync(int userID, int medicineID, int quantity, string priceType = "Strip")
         {
-            
             if (quantity <= 0)
             {
                 throw new ArgumentException("Quantity must be greater than zero.");
@@ -38,7 +38,7 @@ namespace Services
                 throw new ArgumentException("Medicine not found.");
             }
 
-
+    
             decimal selectedPrice = priceType switch
             {
                 "Strip" => medicine.StripPrice ?? throw new Exception("Strip price is not set for this medicine."),
@@ -46,35 +46,40 @@ namespace Services
                 _ => throw new ArgumentException("Invalid price type.")
             };
 
-            var existingItem = cart.Items.FirstOrDefault(item => item.MedicineID == medicineID && item.PriceType == priceType);
+           
+            var existingItem = cart.Items.FirstOrDefault(item =>
+                item.MedicineID == medicineID && item.PriceType == priceType);
+
             if (existingItem != null)
             {
-                
+        
                 existingItem.Quantity += quantity;
             }
             else
             {
-               
+       
                 cart.Items.Add(new CartItem
                 {
                     MedicineID = medicineID,
                     Quantity = quantity,
                     Price = selectedPrice,
-                    PriceType = priceType,
-                    Medicine = null 
+                    PriceType = priceType
                 });
             }
 
-         
+          
             await _unitOfWork.CompleteAsync();
         }
         // Remove Medicine from Cart
-        public async Task RemoveFromCartAsync(int userID, int medicineID)
+        public async Task RemoveFromCartAsync(int userID, int medicineID, string priceType = "Strip")
         {
             var cart = await GetCartEntityAsync(userID);
             if (cart != null)
             {
-                var itemToRemove = cart.Items.FirstOrDefault(item => item.MedicineID == medicineID);
+              
+                var itemToRemove = cart.Items.FirstOrDefault(item =>
+                    item.MedicineID == medicineID && item.PriceType == priceType);
+
                 if (itemToRemove != null)
                 {
                     cart.Items.Remove(itemToRemove);
@@ -119,11 +124,31 @@ namespace Services
 
         private async Task<Cart> GetCartEntityAsync(int userID)
         {
-            return await _unitOfWork.Carts.FirstOrDefaultAsync(
+            return await _unitOfWork.Carts.FirstOrDefaultWithIncludesAsync(
                 c => c.UserId == userID,
-                c => c.Items);
-        }
+                query => query
+                    .Include(c => c.Items)
+                    .ThenInclude(i => i.Medicine)
+            );
 
+        }
+        public async Task ClearCartAsync(int userID)
+        {
+            var cart = await GetCartEntityAsync(userID);
+            if (cart != null && cart.Items != null && cart.Items.Any())
+            {
+                cart.Items.Clear();
+                await _unitOfWork.CompleteAsync();
+            }
+        }
+        public async Task<CartResponse> GetCartByCartIDAsync(int cartID)
+        {
+            var cart = await _unitOfWork.Carts.GetByIdAsync(cartID);
+            if (cart == null || cart.Items == null || !cart.Items.Any())
+                return null;
+
+            return _mapper.Map<CartResponse>(cart);
+        }
     }
 
 }

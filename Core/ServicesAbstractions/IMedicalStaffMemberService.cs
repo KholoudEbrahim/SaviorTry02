@@ -13,5 +13,6 @@ namespace ServicesAbstractions
         Task<MedicalStaffMember> CreateMedicalStaffMemberAsync(MedicalStaffMember staffMember);
         Task<MedicalStaffMember> GetMedicalStaffMemberByIdAsync(int id);
         Task<IEnumerable<MedicalStaffMember>> GetAvailableStaffAsync(MedicalRole role, string day);
+        Task<IEnumerable<MedicalStaffMember>> GetAllMedicalStaffAsync();
     }
 }

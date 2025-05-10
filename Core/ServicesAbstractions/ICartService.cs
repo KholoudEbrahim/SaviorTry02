@@ -11,7 +11,9 @@ namespace ServicesAbstractions
     public interface ICartService
     {
         Task AddToCartAsync(int userID, int medicineID, int quantity, string priceType = "Strip");
-        Task RemoveFromCartAsync(int userID, int medicineID);
+        Task RemoveFromCartAsync(int userID, int medicineID, string priceType = "Strip");
         Task<CartResponse> GetCartAsync(int userID);
+        Task ClearCartAsync(int userID);
+        Task<CartResponse> GetCartByCartIDAsync(int cartID);
     }
 }

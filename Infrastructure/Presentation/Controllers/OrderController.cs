@@ -36,12 +36,12 @@ namespace Presentation.Controllers
                 if (request == null || request.UserID <= 0)
                     return BadRequest("Invalid request data.");
 
-          
+
                 var user = await _unitOfWork.Users.GetByIdAsync(request.UserID);
                 if (user == null)
                     return BadRequest("User not found.");
 
-    
+
                 Console.WriteLine($"Attempting checkout for user {request.UserID}");
                 Console.WriteLine($"Coordinates: {request.UserLatitude}, {request.UserLongitude}");
 
@@ -80,7 +80,7 @@ namespace Presentation.Controllers
                     request.UserLongitude,
                     orderItems
                 );
-              
+
 
                 Console.WriteLine($"Order created with ID: {orderID}");
 
@@ -99,7 +99,7 @@ namespace Presentation.Controllers
                 return StatusCode(500, "An error occurred while processing your order.");
             }
         }
-        [HttpPost("{orderId}/confirm")]
+            [HttpPost("{orderId}/confirm")]
         public async Task<IActionResult> ConfirmOrder(int orderId)
         {
             var order = await _unitOfWork.Orders.GetByIdAsync(orderId);
@@ -131,6 +131,26 @@ namespace Presentation.Controllers
         {
             var orders = await _orderService.GetPastOrdersAsync(userID);
             return Ok(orders);
+        }
+
+
+        [HttpGet("all-orders")]
+        public async Task<IActionResult> GetAllOrders()
+        {
+            try
+            {
+                var orders = await _orderService.GetAllOrdersAsync();
+            
+                if (orders == null || !orders.Any())
+                {
+                    return NotFound("No orders found.");
+                }            
+                return Ok(orders);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
     }
 }

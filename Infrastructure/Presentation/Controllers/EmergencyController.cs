@@ -1,4 +1,5 @@
 ﻿using Domain.Models;
+using Domain.Models.Enumerations;
 using Microsoft.AspNetCore.Mvc;
 using ServicesAbstractions;
 using Shared.EmergencyDTOs;
@@ -53,5 +54,22 @@ namespace Presentation.Controllers
             var emergencies = await _emergencyService.GetEmergenciesByUserIdAsync(userId);
             return Ok(emergencies);
         }
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllEmergencies([FromQuery] DateTime? fromDate, [FromQuery] int? type)
+        {
+            var emergencies = await _emergencyService.GetAllEmergenciesAsync();
+
+            if (fromDate.HasValue)
+            {
+                emergencies = emergencies.Where(e => e.CreatedAt >= fromDate.Value);
+            }
+            if (type.HasValue)
+            {
+
+                emergencies = emergencies.Where(e => e.Type == (EmergencyType)type.Value);
+            }
+            return Ok(emergencies);
+        }
     }
+
 }
