@@ -12,9 +12,10 @@ using System.Security.Claims;
 using System.Text;
 using Domain.Models;
 using Microsoft.Extensions.Configuration;
-using Shared;
 using Persistence;
 using Services;
+using Shared.UserDTOs;
+using Microsoft.Extensions.Logging;
 namespace Presentation.Controllers
 {
     [Route("api/[controller]")]
@@ -23,11 +24,12 @@ namespace Presentation.Controllers
     {
         private readonly SaviorDbContext _context;
         private readonly IConfiguration _configuration;
-
-        public AuthenticationController(SaviorDbContext context, IConfiguration configuration)
+        private readonly ILogger<AuthenticationController> _logger;
+        public AuthenticationController(SaviorDbContext context, IConfiguration configuration, ILogger<AuthenticationController> logger)
         {
             _context = context;
             _configuration = configuration;
+            _logger = logger;
         }
 
         [HttpPost("signup")]
@@ -139,6 +141,66 @@ namespace Presentation.Controllers
             await _context.SaveChangesAsync();
 
             return Ok("Password has been successfully reset.");
+        }
+
+        [HttpPost("sync")]
+        public async Task<IActionResult> SyncUser([FromBody] ExternalUserDto userDto)
+        {
+            if (userDto == null)
+            {
+                _logger.LogWarning("SyncUser called with null userDto");
+                return BadRequest("User data is required.");
+            }
+
+            using (var transaction = await _context.Database.BeginTransactionAsync())
+            {
+                try
+                {
+
+                    var existingUser = await _context.Users.FindAsync(userDto.Id);
+                    if (existingUser != null)
+                    {
+                        _logger.LogWarning($"User with ID {userDto.Id} already exists");
+                        return Conflict("User already exists");
+                    }
+
+
+                    await _context.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT dbo.Users ON");
+                    _logger.LogInformation("IDENTITY_INSERT enabled for Users table");
+
+                    var user = new User
+                    {
+                        Id = userDto.Id,
+                        Fname = userDto.Fname,
+                        Lname = userDto.Lname,
+                        Email = userDto.Email,
+                        Phone = userDto.Phone,
+                        Password = userDto.Password
+                    };
+
+                    _context.Users.Add(user);
+                    await _context.SaveChangesAsync();
+                    _logger.LogInformation($"User with ID {userDto.Id} synced successfully");
+
+               
+                    await _context.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT dbo.Users OFF");
+                    _logger.LogInformation("IDENTITY_INSERT disabled for Users table");
+
+                    await transaction.CommitAsync();
+                    return Ok(new { Message = "User synced successfully", UserId = userDto.Id });
+                }
+                catch (Exception ex)
+                {
+                    await transaction.RollbackAsync();
+                    _logger.LogError(ex, $"Error syncing user with ID {userDto?.Id}");
+                    return StatusCode(500, new
+                    {
+                        Message = "Internal server error",
+                        Details = ex.Message,
+                        StackTrace = ex.StackTrace
+                    });
+                }
+            }
         }
     }
 }

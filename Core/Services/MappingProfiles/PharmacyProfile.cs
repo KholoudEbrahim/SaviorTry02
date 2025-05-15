@@ -10,16 +10,19 @@ using System.Threading.Tasks;
 namespace Services.MappingProfiles
 {
     public class PharmacyProfile : Profile
-
     {
         public PharmacyProfile()
         {
-
             CreateMap<Pharmacy, PharmacyResponse>()
-                 .ForMember(dest => dest.FullAddress, opt => opt.MapFrom(src =>
-                $"{src.Street}, {src.BuildingNumber}, {src.City}"))
-            .ForMember(dest => dest.DistanceInKm, opt => opt.Ignore());
+                .ForMember(dest => dest.FullAddress, opt => opt.MapFrom(src =>
+                    $"{src.Street}, {src.BuildingNumber}, {src.City}"))
+                .ForMember(dest => dest.DistanceInKm, opt => opt.Ignore());
 
+
+            CreateMap<Pharmacy, PharmacyDetailsResponse>()
+                .ForMember(dest => dest.FullAddress, opt => opt.MapFrom(src =>
+                    $"{src.Street}, {src.BuildingNumber}, {src.City}"))
+                    .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Phone));
         }
     }
 }

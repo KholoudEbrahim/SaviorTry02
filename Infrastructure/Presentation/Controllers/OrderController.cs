@@ -2,6 +2,7 @@
 using Domain.Models.Enumerations;
 using Domain.Models.OrderEntities;
 using Microsoft.AspNetCore.Mvc;
+using Persistence.Repositories;
 using ServicesAbstractions;
 using Shared.CartDTOs;
 using Shared.OrderDTOs;
@@ -20,12 +21,14 @@ namespace Presentation.Controllers
         private readonly IOrderService _orderService;
         private readonly ICartService _cartService;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IOrderRepository _orderRepository;
 
-        public OrderController(IOrderService orderService, ICartService cartService, IUnitOfWork unitOfWork)
+        public OrderController(IOrderService orderService, ICartService cartService, IUnitOfWork unitOfWork, IOrderRepository orderRepository)
         {
             _orderService = orderService;
             _cartService = cartService;
             _unitOfWork = unitOfWork;
+            _orderRepository = orderRepository;
         }
 
         [HttpPost("checkout")]
@@ -99,6 +102,10 @@ namespace Presentation.Controllers
                 return StatusCode(500, "An error occurred while processing your order.");
             }
         }
+
+
+
+
             [HttpPost("{orderId}/confirm")]
         public async Task<IActionResult> ConfirmOrder(int orderId)
         {
@@ -116,6 +123,8 @@ namespace Presentation.Controllers
             });
         }
 
+
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetOrderDetails(int id)
         {
@@ -129,9 +138,18 @@ namespace Presentation.Controllers
         [HttpGet("past-orders/{userID}")]
         public async Task<IActionResult> GetPastOrders(int userID)
         {
-            var orders = await _orderService.GetPastOrdersAsync(userID);
-            return Ok(orders);
+            try
+            {
+                var orders = await _orderService.GetPastOrdersAsync(userID);
+                return Ok(orders);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
+
+
 
 
         [HttpGet("all-orders")]

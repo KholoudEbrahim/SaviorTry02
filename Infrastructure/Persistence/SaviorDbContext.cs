@@ -30,7 +30,7 @@ namespace Persistence
         public DbSet<Emergency> Emergencies { get; set; }
         public DbSet<MedicalStaffMember> MedicalStaffMembers { get; set; }
         public DbSet<AvailabilityEntry> AvailabilityEntries { get; set; }
-
+        public DbSet<MedicalRequest> MedicalRequests { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(SaviorDbContext).Assembly);
@@ -75,6 +75,20 @@ namespace Persistence
                 .HasKey(e => e.Id);
 
             // Configure MedicalStaffMember
+
+
+            modelBuilder.Entity<MedicalRequest>()
+           .HasOne(mr => mr.User)
+            .WithMany()
+           .HasForeignKey(mr => mr.UserId)
+             .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<MedicalRequest>()
+           .HasOne(mr => mr.MedicalStaffMember)
+            .WithMany(msm => msm.Requests) 
+              .HasForeignKey(mr => mr.MedicalStaffMemberId)
+            .OnDelete(DeleteBehavior.Restrict);
+
             modelBuilder.Entity<MedicalStaffMember>()
                 .HasKey(msm => msm.Id);
 

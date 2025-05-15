@@ -24,16 +24,18 @@ namespace Domain.Models
 
         [Required]
         public string BuildingNumber { get; set; } = string.Empty;
-
         [Required]
-        public bool HasDelivery { get; set; }
-
+        public string Phone { get; set; } = string.Empty;
+        [Required]
+        public bool HasDelivery { get; set; }       
         public double Latitude { get; set; }
         public double Longitude { get; set; }
 
         // Navigation properties
         public virtual ICollection<Supplies> Supplies { get; set; } = new List<Supplies>();
         public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+      
+
     }
 
 }

@@ -78,7 +78,8 @@ namespace Services
                 Name = pharmacy.Name,
                 FullAddress = $"{pharmacy.Street}, {pharmacy.City}",
                 HasDelivery = pharmacy.HasDelivery,
-                AvailableMedicines = medicineResponses
+                AvailableMedicines = medicineResponses,
+                Phone = pharmacy.Phone
             };
         }
         //public async Task<CartDTO> AddToCart(int medicineId, int quantity, int pharmacyId)

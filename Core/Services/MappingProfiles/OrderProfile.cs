@@ -17,6 +17,9 @@ namespace Services.MappingProfiles
             CreateMap<Order, OrderResponse>()
                 .ForMember(dest => dest.OrderItems, opt => opt.MapFrom(src => src.OrderItems));
 
+            CreateMap<Order, OrderResponse>()
+              .ForMember(dest => dest.OrderID, opt => opt.MapFrom(src => src.Id));
+        
             CreateMap<OrderItem, OrderItemResponse>()
                 .ForMember(dest => dest.MedicineName, opt => opt.MapFrom(src => src.Medicine.Name));
         }

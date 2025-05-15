@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Domain.Contracts;
+using Domain.Models;
 using Domain.Models.Enumerations;
 using Domain.Models.OrderEntities;
 using Microsoft.Extensions.Logging;
@@ -21,13 +22,14 @@ namespace Services
         private readonly NotificationService _notificationService;
         private readonly ILogger<OrderService> _logger;
         private const decimal FIXED_SHIPPING_PRICE = 20.00m;
-
-        public OrderService(IUnitOfWork unitOfWork, IMapper mapper, NotificationService notificationService, ILogger<OrderService> logger)
+        private readonly IOrderRepository _orderRepository;
+        public OrderService(IUnitOfWork unitOfWork, IMapper mapper, NotificationService notificationService, ILogger<OrderService> logger, IOrderRepository orderRepository)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _notificationService = notificationService;
             _logger = logger;
+            _orderRepository = orderRepository;
         }
 
         public async Task<int> CreateOrderAsync(int userID, double userLatitude, double userLongitude, List<OrderItem> orderItems)
@@ -116,7 +118,7 @@ namespace Services
 
         public async Task<OrderResponse> GetOrderDetailsAsync(int orderID)
         {
-            var order = await _unitOfWork.Orders.GetByIdAsync(orderID);
+            var order = await _orderRepository.GetOrderWithDetailsAsync(orderID);
             if (order == null)
                 return null;
 
@@ -139,7 +141,7 @@ namespace Services
 
         public async Task<IEnumerable<OrderResponse>> GetPastOrdersAsync(int userID)
         {
-            var orders = await _unitOfWork.Orders.FindAsync(o => o.UserID == userID);
+            var orders = await _orderRepository.GetPastOrdersAsync(userID);
             return _mapper.Map<IEnumerable<OrderResponse>>(orders);
         }
 
@@ -191,6 +193,7 @@ namespace Services
             _logger.LogInformation($"Order {orderID} has been cancelled.");
         }
 
+
         public decimal CalculateTotalPrice(List<OrderItem> orderItems)
         {
             if (orderItems == null || !orderItems.Any())
@@ -199,10 +202,17 @@ namespace Services
             decimal medicinesSubtotal = orderItems.Sum(item => item.Price * item.Quantity);
             return medicinesSubtotal + FIXED_SHIPPING_PRICE;
         }
+
         public async Task<IEnumerable<OrderResponse>> GetAllOrdersAsync()
         {
-            var orders = await _unitOfWork.Orders.GetAllAsync();
+            var orders = await _orderRepository.GetAllUsersOrdersAsync();
             return _mapper.Map<IEnumerable<OrderResponse>>(orders);
         }
+        //public async Task<IEnumerable<OrderResponse>> GetAllOrdersAsync()
+        //{
+        //    var orders = await _unitOfWork.Orders.GetAllAsync();
+        //    return _mapper.Map<IEnumerable<OrderResponse>>(orders);
+        //}
     }
 }
+//GetAllUsersOrdersAsync

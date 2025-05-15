@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence;
 
@@ -11,9 +12,11 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(SaviorDbContext))]
-    partial class SaviorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250513170412_updatePharmacyphone")]
+    partial class updatePharmacyphone
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -204,47 +207,6 @@ namespace Persistence.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("Emergencies");
-                });
-
-            modelBuilder.Entity("Domain.Models.MedicalRequest", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("MedicalStaffMemberId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Notes")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("RequestDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MedicalStaffMemberId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("MedicalRequests");
                 });
 
             modelBuilder.Entity("Domain.Models.MedicalStaffMember", b =>
@@ -535,7 +497,10 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Models.User", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -628,25 +593,6 @@ namespace Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Domain.Models.MedicalRequest", b =>
-                {
-                    b.HasOne("Domain.Models.MedicalStaffMember", "MedicalStaffMember")
-                        .WithMany("Requests")
-                        .HasForeignKey("MedicalStaffMemberId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("MedicalStaffMember");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Domain.Models.MedicalStaffMember", b =>
                 {
                     b.HasOne("Domain.Models.User", null)
@@ -715,8 +661,6 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Models.MedicalStaffMember", b =>
                 {
                     b.Navigation("Availability");
-
-                    b.Navigation("Requests");
                 });
 
             modelBuilder.Entity("Domain.Models.Medicine", b =>

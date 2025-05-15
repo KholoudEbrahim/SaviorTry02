@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared
+namespace Shared.UserDTOs
 {
-    public class RegisterDto
+    public record ExternalUserDto
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+
+        public int Id { get; set; }  
+        public string Fname { get; set; }
+        public string Lname { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Password { get; set; }
-        public string ConfirmPassword { get; set; }
     }
 }

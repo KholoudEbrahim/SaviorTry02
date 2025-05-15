@@ -24,6 +24,7 @@ namespace Domain.Models
 
 
         public virtual ICollection<AvailabilityEntry> Availability { get; set; } = new List<AvailabilityEntry>();
+        public virtual ICollection<MedicalRequest> Requests { get; set; } = new List<MedicalRequest>();
         public bool ConfirmSummons()
         {
             // Logic for confirming summons (e.g., mark as assigned)

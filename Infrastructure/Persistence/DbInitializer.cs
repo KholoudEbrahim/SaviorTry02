@@ -23,7 +23,10 @@ public class DbInitializer(SaviorDbContext context) : IDbInitializer
             {
             Console.WriteLine("Starting DB Initialization...");
 
-            var basePath = AppDomain.CurrentDomain.BaseDirectory;
+                //context.Set<Pharmacy>().RemoveRange(context.Set<Pharmacy>());
+                //await context.SaveChangesAsync();
+
+                var basePath = AppDomain.CurrentDomain.BaseDirectory;
             var seedingPath = Path.Combine(basePath, "Data", "Seeding");
 
             // Seed Users if empty
@@ -190,16 +193,27 @@ public class DbInitializer(SaviorDbContext context) : IDbInitializer
     private async Task SeedEntities<T>(SaviorDbContext context, string seedingPath, string fileName) where T : class
     {
         var filePath = Path.Combine(seedingPath, fileName);
+
+        if (!File.Exists(filePath))
+        {
+            Console.WriteLine($"File not found: {filePath}");
+            return;
+        }
+
         var data = await File.ReadAllTextAsync(filePath);
         var objects = JsonSerializer.Deserialize<List<T>>(data);
 
-        if (objects is not null && objects.Any())
+        if (objects is null || !objects.Any())
         {
-            context.Set<T>().AddRange(objects);
-            await context.SaveChangesAsync();
+            Console.WriteLine($"No data found in file: {fileName}");
+            return;
         }
-    }
 
+        context.Set<T>().AddRange(objects);
+        await context.SaveChangesAsync();
+
+        Console.WriteLine($"Seeded {objects.Count} records for {typeof(T).Name}");
+    }
     private async Task SeedMedicalStaff(SaviorDbContext context, string seedingPath, string fileName, MedicalRole role)
     {
         var filePath = Path.Combine(seedingPath, fileName);

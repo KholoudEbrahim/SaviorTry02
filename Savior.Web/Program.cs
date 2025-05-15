@@ -45,7 +45,8 @@ namespace Savior.Web
             builder.Services.AddScoped<IGenericRepository<Order>, GenericRepository<Order>>();
             builder.Services.AddScoped<IGenericRepository<Emergency>, GenericRepository<Emergency>>();
             builder.Services.AddScoped<IGenericRepository<MedicalStaffMember>, GenericRepository<MedicalStaffMember>>();
-
+            builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+            builder.Services.AddScoped<IGenericRepository<MedicalRequest>, GenericRepository<MedicalRequest>>();
             // Unit of Work
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
@@ -59,6 +60,7 @@ namespace Savior.Web
             builder.Services.AddScoped<IEmergencyService, EmergencyService>();
             builder.Services.AddScoped<IMedicalStaffMemberService, MedicalStaffMemberService>();
             builder.Services.AddHttpClient<ChatService>();
+            builder.Services.AddScoped<IMedicalRequestService, MedicalRequestService>();
 
 
 
